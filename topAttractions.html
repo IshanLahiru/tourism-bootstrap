@@ -1,30 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top Attractions in Sri Lanka - Manon Lanka Tours</title>
-    
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- AOS Animation Library -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --primary-color: #0d6efd;
-            --secondary-color: #6c757d;
-            --accent-color: #ffc107;
-            --dark-color: #212529;
-            --light-color: #f8f9fa;
-            --text-color: #333;
+            --primary-color: #2563EB;
+            --secondary-color: #475569;
+            --accent-color: #F59E0B;
+            --success-color: #10B981;
+            --warning-color: #EF4444;
+            --dark-color: #0F172A;
+            --light-color: #F8FAFC;
+            --text-color: #1E293B;
+            --text-secondary: #64748B;
+            --border-color: #E2E8F0;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
         * {
@@ -34,43 +42,58 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
             color: var(--text-color);
             overflow-x: hidden;
+            background-color: #FFFFFF;
         }
 
         /* Navigation */
         .navbar {
             background: rgba(255, 255, 255, 0.95) !important;
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             transition: all 0.3s ease;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
         }
 
         .navbar-brand {
             font-weight: 700;
             font-size: 1.5rem;
             color: var(--primary-color) !important;
+            letter-spacing: -0.025em;
         }
 
         .nav-link {
             font-weight: 500;
-            color: var(--dark-color) !important;
-            margin: 0 0.5rem;
-            transition: color 0.3s ease;
+            color: var(--text-color) !important;
+            margin: 0 0.25rem;
+            transition: all 0.2s ease;
+            position: relative;
+            padding: 0.75rem 1.25rem !important;
+            border-radius: 0;
         }
 
         .nav-link:hover {
             color: var(--primary-color) !important;
+            background: transparent;
         }
+
+        .nav-link.active {
+            color: var(--primary-color) !important;
+            background: transparent;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
 
         /* Hero Section */
         .hero {
             height: 60vh;
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                        url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+                url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -121,17 +144,18 @@
         /* Attraction Cards */
         .attraction-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 0;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
             height: 100%;
-            margin-bottom: 2rem;
+            margin-bottom: 0;
+            border: 1px solid var(--border-color);
         }
 
         .attraction-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
 
         .attraction-card img {
@@ -152,20 +176,20 @@
         }
 
         .attraction-card p {
-            color: #666;
+            color: var(--text-secondary);
             margin-bottom: 1.5rem;
         }
 
         .attraction-icon {
-            width: 60px;
-            height: 60px;
+            width: 48px;
+            height: 48px;
             background: var(--primary-color);
-            border-radius: 50%;
+            border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             margin-bottom: 1rem;
         }
 
@@ -174,28 +198,30 @@
             color: white;
             padding: 0.75rem 1.5rem;
             border: none;
-            border-radius: 25px;
+            border-radius: 0;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             display: inline-block;
         }
 
         .btn-explore:hover {
-            background: #0b5ed7;
+            background: #1D4ED8;
             color: white;
-            transform: translateY(-2px);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
         }
 
         /* Featured Attraction */
         .featured-attraction {
-            background: linear-gradient(135deg, var(--primary-color), #0b5ed7);
+            background: linear-gradient(135deg, var(--primary-color), #1D4ED8);
             color: white;
-            border-radius: 20px;
-            padding: 3rem;
-            margin-bottom: 4rem;
+            border-radius: 0;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
             position: relative;
             overflow: hidden;
+            border: 1px solid var(--border-color);
         }
 
         .featured-attraction::before {
@@ -216,36 +242,91 @@
         }
 
         /* Footer */
-        .footer {
-            background: var(--dark-color);
-            color: white;
-            padding: 3rem 0 1rem;
-        }
+    .footer {
+      background: var(--dark-color);
+      color: white;
+      padding: 3rem 0 2rem;
+      border-top: 1px solid var(--border-color);
+    }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
+    .footer h5 {
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
 
-        .social-links a {
-            width: 50px;
-            height: 50px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
+    .footer p,
+    .footer a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
 
-        .social-links a:hover {
-            background: var(--accent-color);
-            transform: translateY(-3px);
-        }
+    .footer a:hover {
+      color: white;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      background: var(--primary-color);
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: all 0.2s ease;
+    }
+
+    .social-links a:hover {
+      background: var(--accent-color);
+      transform: translateY(-1px);
+    }
+
+    /* Newsletter styling */
+    .footer .input-group {
+      margin-top: 1rem;
+    }
+
+    .footer .form-control {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      border-radius: 0;
+    }
+
+    .footer .form-control::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .footer .form-control:focus {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
+      color: white;
+    }
+
+    .footer .btn-primary {
+      background: var(--primary-color);
+      border: 1px solid var(--primary-color);
+      border-radius: 0;
+      padding: 0.75rem 1.5rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .footer .btn-primary:hover {
+      background: #1D4ED8;
+      border-color: #1D4ED8;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -293,11 +374,11 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             background: var(--primary-color);
             color: white;
-            border-radius: 50%;
+            border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -319,6 +400,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top">
@@ -327,11 +409,11 @@
                 <i class="fas fa-map-marked-alt me-2"></i>
                 Manon Lanka Tours
             </a>
-            
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
@@ -347,7 +429,7 @@
                         <a class="nav-link" href="thingsToDo.html">Things to Do</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="topAttractions.html">Attractions</a>
+                        <a class="nav-link  active" href="topAttractions.html">Attractions</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact</a>
@@ -373,7 +455,9 @@
             <div class="featured-attraction" data-aos="fade-up">
                 <div class="featured-content">
                     <h2 class="mb-3">Sigiriya Rock Fortress</h2>
-                    <p class="mb-4">The ancient palace and fortress complex of Sigiriya is one of Sri Lanka's most iconic landmarks. This UNESCO World Heritage site features stunning frescoes, landscaped gardens, and breathtaking views from the summit.</p>
+                    <p class="mb-4">The ancient palace and fortress complex of Sigiriya is one of Sri Lanka's most
+                        iconic landmarks. This UNESCO World Heritage site features stunning frescoes, landscaped
+                        gardens, and breathtaking views from the summit.</p>
                     <a href="#" class="btn-explore">Learn More</a>
                 </div>
             </div>
@@ -388,16 +472,18 @@
                 <p>Explore the most popular and breathtaking destinations across Sri Lanka</p>
             </div>
 
-            <div class="row">
+            <div class="row g-4">
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="attraction-card">
-                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Temple of the Tooth">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                            alt="Temple of the Tooth">
                         <div class="card-body">
                             <div class="attraction-icon">
                                 <i class="fas fa-landmark"></i>
                             </div>
                             <h3>Temple of the Tooth</h3>
-                            <p>Located in Kandy, this sacred Buddhist temple houses the relic of the tooth of Buddha and is a UNESCO World Heritage site.</p>
+                            <p>Located in Kandy, this sacred Buddhist temple houses the relic of the tooth of Buddha and
+                                is a UNESCO World Heritage site.</p>
                             <a href="#" class="btn-explore">Explore</a>
                         </div>
                     </div>
@@ -405,13 +491,15 @@
 
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="attraction-card">
-                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Galle Fort">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                            alt="Galle Fort">
                         <div class="card-body">
                             <div class="attraction-icon">
                                 <i class="fas fa-fort-awesome"></i>
                             </div>
                             <h3>Galle Fort</h3>
-                            <p>A historic fortification built by the Portuguese in the 16th century, featuring colonial architecture and stunning ocean views.</p>
+                            <p>A historic fortification built by the Portuguese in the 16th century, featuring colonial
+                                architecture and stunning ocean views.</p>
                             <a href="#" class="btn-explore">Explore</a>
                         </div>
                     </div>
@@ -419,13 +507,15 @@
 
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="attraction-card">
-                        <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Ella Rock">
+                        <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                            alt="Ella Rock">
                         <div class="card-body">
                             <div class="attraction-icon">
                                 <i class="fas fa-mountain"></i>
                             </div>
                             <h3>Ella Rock</h3>
-                            <p>A popular hiking destination offering panoramic views of the surrounding mountains and tea plantations.</p>
+                            <p>A popular hiking destination offering panoramic views of the surrounding mountains and
+                                tea plantations.</p>
                             <a href="#" class="btn-explore">Explore</a>
                         </div>
                     </div>
@@ -433,13 +523,15 @@
 
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
                     <div class="attraction-card">
-                        <img src="https://images.unsplash.com/photo-1549366021-9f761d450615?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Yala National Park">
+                        <img src="https://images.unsplash.com/photo-1549366021-9f761d450615?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                            alt="Yala National Park">
                         <div class="card-body">
                             <div class="attraction-icon">
                                 <i class="fas fa-paw"></i>
                             </div>
                             <h3>Yala National Park</h3>
-                            <p>Famous for its leopard population and diverse wildlife, offering thrilling safari experiences in their natural habitat.</p>
+                            <p>Famous for its leopard population and diverse wildlife, offering thrilling safari
+                                experiences in their natural habitat.</p>
                             <a href="#" class="btn-explore">Explore</a>
                         </div>
                     </div>
@@ -447,13 +539,15 @@
 
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
                     <div class="attraction-card">
-                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Anuradhapura">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                            alt="Anuradhapura">
                         <div class="card-body">
                             <div class="attraction-icon">
                                 <i class="fas fa-dharmachakra"></i>
                             </div>
                             <h3>Anuradhapura</h3>
-                            <p>An ancient city and UNESCO World Heritage site featuring well-preserved ruins of an ancient Sinhalese civilization.</p>
+                            <p>An ancient city and UNESCO World Heritage site featuring well-preserved ruins of an
+                                ancient Sinhalese civilization.</p>
                             <a href="#" class="btn-explore">Explore</a>
                         </div>
                     </div>
@@ -461,13 +555,15 @@
 
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
                     <div class="attraction-card">
-                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Mirissa Beach">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                            alt="Mirissa Beach">
                         <div class="card-body">
                             <div class="attraction-icon">
                                 <i class="fas fa-umbrella-beach"></i>
                             </div>
                             <h3>Mirissa Beach</h3>
-                            <p>A pristine beach known for whale watching, surfing, and stunning sunsets along the southern coast.</p>
+                            <p>A pristine beach known for whale watching, surfing, and stunning sunsets along the
+                                southern coast.</p>
                             <a href="#" class="btn-explore">Explore</a>
                         </div>
                     </div>
@@ -479,16 +575,47 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5>Manon Lanka Tours</h5>
+                    <p>Your trusted partner for unforgettable Sri Lankan adventures. We specialize in creating
+                        personalized
+                        travel experiences that showcase the beauty, culture, and excitement of paradise island.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="tourPackages.html">Tour Packages</a></li>
+                        <li><a href="thingsToDo.html">Things to Do</a></li>
+                        <li><a href="topAttractions.html">Attractions</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> 123 Travel Street, Colombo, Sri Lanka</p>
+                    <p><i class="fas fa-phone me-2"></i> +94 11 234 5678</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@manonlankatours.com</p>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5>Newsletter</h5>
+                    <p>Subscribe to our newsletter for travel tips and special offers.</p>
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Your email">
+                        <button class="btn btn-primary" type="button">Subscribe</button>
+                    </div>
+                </div>
             </div>
-            
+            <hr class="my-4">
             <div class="text-center">
                 <p>&copy; 2024 Manon Lanka Tours. All rights reserved.</p>
-                <p>Discover the magic of paradise island</p>
             </div>
         </div>
     </footer>
@@ -500,10 +627,10 @@
 
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- AOS Animation JS -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    
+
     <script>
         // Initialize AOS
         AOS.init({
@@ -528,13 +655,23 @@
 
         // Scroll to top button
         const scrollTopBtn = document.querySelector('.scroll-top');
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             if (window.scrollY > 300) {
                 scrollTopBtn.classList.add('show');
             } else {
                 scrollTopBtn.classList.remove('show');
             }
         });
+
+        // Newsletter subscription
+        document.querySelector('.btn-primary').addEventListener('click', function () {
+            const email = document.querySelector('input[type="email"]').value;
+            if (email) {
+                alert('Thank you for subscribing to our newsletter!');
+                document.querySelector('input[type="email"]').value = '';
+            }
+        });
     </script>
 </body>
+
 </html>
