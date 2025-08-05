@@ -15,15 +15,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #007AFF;
-      --secondary-color: #5856D6;
-      --accent-color: #FF9500;
-      --success-color: #34C759;
-      --warning-color: #FF3B30;
-      --dark-color: #1D1D1F;
-      --light-color: #F5F5F7;
-      --text-color: #1D1D1F;
-      --text-secondary: #86868B;
+      --primary-color: #2563EB;
+      --secondary-color: #475569;
+      --accent-color: #F59E0B;
+      --success-color: #10B981;
+      --warning-color: #EF4444;
+      --dark-color: #0F172A;
+      --light-color: #F8FAFC;
+      --text-color: #1E293B;
+      --text-secondary: #64748B;
+      --border-color: #E2E8F0;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     }
 
     * {
@@ -42,113 +46,140 @@
 
     /* Navigation */
     .navbar {
-      background: rgba(255, 255, 255, 0.8) !important;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       transition: all 0.3s ease;
-      padding: 1rem 0;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
     }
 
     .navbar-brand {
-      font-weight: 600;
+      font-weight: 700;
       font-size: 1.5rem;
       color: var(--primary-color) !important;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.025em;
     }
 
     .nav-link {
       font-weight: 500;
       color: var(--text-color) !important;
-      margin: 0 0.5rem;
-      transition: all 0.3s ease;
+      margin: 0 0.25rem;
+      transition: all 0.2s ease;
       position: relative;
-      padding: 0.5rem 1rem !important;
-      border-radius: 8px;
+      padding: 0.75rem 1.25rem !important;
+      border-radius: 0;
     }
 
     .nav-link:hover {
       color: var(--primary-color) !important;
-      background: rgba(0, 122, 255, 0.1);
+      background: transparent;
     }
 
     .nav-link.active {
       color: var(--primary-color) !important;
-      background: rgba(0, 122, 255, 0.1);
+      background: transparent;
+      border-bottom: 2px solid var(--primary-color);
     }
 
-            /* Hero Section */
-        .hero-section {
-          height: 100vh;
-          position: relative;
-          overflow: hidden;
-        }
+    /* Hero Section */
+    .hero-section {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
 
-        .hero-slide {
-          height: 100vh;
-          background-size: cover;
-          background-position: center;
-          background-attachment: fixed;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
-          color: white;
-          position: relative;
-        }
+    .hero-slide {
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
 
-        .hero-slide::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
-          z-index: 1;
-        }
+    .hero-slide::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+      z-index: 1;
+    }
 
-        .hero-content {
-          position: relative;
-          z-index: 2;
-        }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
 
-        .carousel-control-prev,
-        .carousel-control-next {
-          width: 60px;
-          height: 60px;
-          background: rgba(255, 255, 255, 0.2);
-          border-radius: 50%;
-          border: none;
-          top: 50%;
-          transform: translateY(-50%);
-          backdrop-filter: blur(10px);
-        }
+    .carousel-control-prev,
+    .carousel-control-next {
+      width: 48px;
+      height: 48px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 0;
+      border: 1px solid var(--border-color);
+      top: 50%;
+      transform: translateY(-50%);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-md);
+    }
 
-        .carousel-control-prev {
-          left: 30px;
-        }
+    .carousel-control-prev {
+      left: 30px;
+    }
 
-        .carousel-control-next {
-          right: 30px;
-        }
+    .carousel-control-next {
+      right: 30px;
+    }
 
-        .carousel-indicators {
-          bottom: 30px;
-        }
+    .carousel-indicators {
+      bottom: 40px;
+      gap: 8px;
+    }
 
-        .carousel-indicators button {
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-          background: rgba(255, 255, 255, 0.5);
-          border: none;
-          margin: 0 5px;
-        }
+    .carousel-indicators button {
+      width: 32px;
+      height: 3px;
+      border-radius: 0;
+      background: rgba(255, 255, 255, 0.4);
+      border: none;
+      margin: 0;
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
 
-        .carousel-indicators button.active {
-          background: var(--primary-color);
-        }
+    .carousel-indicators button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: var(--primary-color);
+      transition: width 0.2s ease;
+    }
+
+    .carousel-indicators button.active {
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .carousel-indicators button.active::before {
+      width: 100%;
+    }
+
+    .carousel-indicators button:hover {
+      background: rgba(255, 255, 255, 0.6);
+      transform: scaleY(1.1);
+    }
 
     .hero-content h1 {
       font-size: 4rem;
@@ -168,48 +199,50 @@
     .btn-hero {
       background: var(--primary-color);
       color: white;
-      padding: 1rem 2.5rem;
+      padding: 1rem 2rem;
       border: none;
-      border-radius: 25px;
+      border-radius: 0;
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: 1rem;
       text-decoration: none;
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
       display: inline-block;
-      box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
+      box-shadow: var(--shadow-md);
+      letter-spacing: 0.025em;
     }
 
     .btn-hero:hover {
-      background: #0056CC;
+      background: #1D4ED8;
       color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 12px 35px rgba(0, 122, 255, 0.4);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-lg);
     }
 
     /* Section Styling */
     .section {
-      padding: 6rem 0;
+      padding: 5rem 0;
     }
 
     .section-title {
       text-align: center;
-      margin-bottom: 4rem;
+      margin-bottom: 3rem;
     }
 
     .section-title h2 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: 700;
       color: var(--text-color);
       margin-bottom: 1rem;
-      letter-spacing: -1px;
+      letter-spacing: -0.025em;
     }
 
     .section-title p {
-      font-size: 1.25rem;
+      font-size: 1.125rem;
       color: var(--text-secondary);
       max-width: 600px;
       margin: 0 auto;
       font-weight: 400;
+      line-height: 1.7;
     }
 
     /* About Section */
@@ -219,16 +252,18 @@
 
     .about-content {
       background: white;
-      padding: 3rem;
-      border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      padding: 2.5rem;
+      border-radius: 0;
+      box-shadow: var(--shadow-sm);
       height: 100%;
+      border: 1px solid var(--border-color);
     }
 
     .about-image {
-      border-radius: 20px;
+      border-radius: 0;
       overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
     }
 
     .about-image img {
@@ -252,30 +287,53 @@
 
     .feature-card {
       background: white;
-      padding: 2.5rem;
-      border-radius: 20px;
+      padding: 2rem;
+      border-radius: 0;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+      border: 1px solid var(--border-color);
     }
 
     .feature-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .feature-card h3 {
+      transition: color 0.3s ease;
+    }
+
+    .feature-card:hover h3 {
+      color: var(--primary-color);
     }
 
     .feature-icon {
       width: 80px;
       height: 80px;
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 2rem;
+      border-radius: 0;
       margin: 0 auto 1.5rem;
+      overflow: hidden;
+      position: relative;
+      transition: all 0.3s ease;
+      border: 2px solid var(--border-color);
+    }
+
+    .feature-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1);
+      border-color: var(--primary-color);
+      box-shadow: var(--shadow-md);
+    }
+
+    .feature-card:hover .feature-icon img {
+      transform: scale(1.1);
     }
 
     .feature-card h3 {
@@ -288,6 +346,33 @@
     .feature-card p {
       color: var(--text-secondary);
       line-height: 1.6;
+      transition: color 0.3s ease;
+    }
+
+    .feature-card:hover p {
+      color: var(--text-color);
+    }
+
+    /* Micro-interactions for feature cards */
+    .feature-card {
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .feature-card:hover::before {
+      left: 100%;
     }
 
     /* Gallery Section */
@@ -300,10 +385,11 @@
 
     .gallery-item {
       position: relative;
-      border-radius: 20px;
+      border-radius: 0;
       overflow: hidden;
       height: 300px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
     }
 
     .gallery-item img {
@@ -340,10 +426,11 @@
 
     .testimonial-card {
       background: white;
-      border-radius: 20px;
-      padding: 2.5rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
+      border-radius: 0;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+      border: 1px solid var(--border-color);
       border: none;
       height: 100%;
       position: relative;
@@ -419,26 +506,28 @@
       background: white;
       color: var(--primary-color);
       padding: 1rem 2.5rem;
-      border: none;
-      border-radius: 25px;
+      border: 1px solid var(--primary-color);
+      border-radius: 0;
       font-weight: 600;
       font-size: 1.1rem;
       text-decoration: none;
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
       display: inline-block;
     }
 
     .btn-cta:hover {
-      background: var(--light-color);
-      color: var(--primary-color);
-      transform: translateY(-2px);
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
     }
 
     /* Footer */
     .footer {
       background: var(--dark-color);
       color: white;
-      padding: 4rem 0 2rem;
+      padding: 3rem 0 2rem;
+      border-top: 1px solid var(--border-color);
     }
 
     .footer h5 {
@@ -447,7 +536,8 @@
       color: white;
     }
 
-    .footer p, .footer a {
+    .footer p,
+    .footer a {
       color: rgba(255, 255, 255, 0.7);
       text-decoration: none;
       transition: color 0.3s ease;
@@ -467,47 +557,86 @@
       width: 40px;
       height: 40px;
       background: var(--primary-color);
-      border-radius: 50%;
+      border-radius: 0;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
     }
 
     .social-links a:hover {
       background: var(--accent-color);
-      transform: translateY(-3px);
+      transform: translateY(-1px);
+    }
+
+    /* Newsletter styling */
+    .footer .input-group {
+      margin-top: 1rem;
+    }
+
+    .footer .form-control {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      border-radius: 0;
+    }
+
+    .footer .form-control::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .footer .form-control:focus {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
+      color: white;
+    }
+
+    .footer .btn-primary {
+      background: var(--primary-color);
+      border: 1px solid var(--primary-color);
+      border-radius: 0;
+      padding: 0.75rem 1.5rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .footer .btn-primary:hover {
+      background: #1D4ED8;
+      border-color: #1D4ED8;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
     }
 
     /* Responsive Design */
     @media (max-width: 768px) {
       .hero-content h1 {
-        font-size: 2.5rem;
+        font-size: 2.25rem;
       }
 
       .hero-content p {
-        font-size: 1.2rem;
+        font-size: 1.125rem;
       }
 
       .section-title h2 {
-        font-size: 2.5rem;
+        font-size: 2rem;
       }
 
       .about-content {
-        padding: 2rem;
+        padding: 1.5rem;
       }
 
       .feature-card {
-        padding: 2rem;
+        padding: 1.5rem;
       }
 
       .testimonial-card {
-        padding: 2rem;
+        padding: 1.5rem;
       }
 
       .cta-content h2 {
-        font-size: 2.5rem;
+        font-size: 2rem;
       }
     }
 
@@ -530,20 +659,20 @@
       position: fixed;
       bottom: 30px;
       right: 30px;
-      width: 50px;
-      height: 50px;
+      width: 48px;
+      height: 48px;
       background: var(--primary-color);
       color: white;
-      border-radius: 50%;
+      border-radius: 0;
       display: flex;
       align-items: center;
       justify-content: center;
       text-decoration: none;
       opacity: 0;
       visibility: hidden;
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
       z-index: 1000;
-      box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+      box-shadow: var(--shadow-md);
     }
 
     .scroll-top.show {
@@ -553,7 +682,7 @@
 
     .scroll-top:hover {
       background: var(--secondary-color);
-      transform: translateY(-3px);
+      transform: translateY(-1px);
     }
   </style>
 </head>
@@ -566,11 +695,11 @@
         <i class="fas fa-map-marked-alt me-2"></i>
         Manon Lanka Tours
       </a>
-      
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
-      
+
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
@@ -601,7 +730,8 @@
     <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1609242030544-f2a37bab739c?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+          <div class="hero-slide"
+            style="background-image: url('https://images.unsplash.com/photo-1609242030544-f2a37bab739c?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
             <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
               <h1>Discover Sri Lanka</h1>
               <p>Experience the magic of paradise island with unforgettable adventures</p>
@@ -610,7 +740,8 @@
           </div>
         </div>
         <div class="carousel-item">
-          <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1507296993015-167a20c29988?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+          <div class="hero-slide"
+            style="background-image: url('https://images.unsplash.com/photo-1507296993015-167a20c29988?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
             <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
               <h1>Explore Paradise</h1>
               <p>From pristine beaches to misty mountains, beauty awaits at every turn</p>
@@ -619,7 +750,8 @@
           </div>
         </div>
         <div class="carousel-item">
-          <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1657946857561-f42916b66712?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+          <div class="hero-slide"
+            style="background-image: url('https://images.unsplash.com/photo-1657946857561-f42916b66712?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
             <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
               <h1>Adventure Awaits</h1>
               <p>Embark on thrilling journeys through ancient temples and wild landscapes</p>
@@ -654,14 +786,20 @@
         <div class="col-lg-6" data-aos="fade-right">
           <div class="about-content">
             <h3 class="mb-4">Your Trusted Travel Partner</h3>
-            <p class="mb-4">At Manon Lanka Tours, we believe that every journey tells a story, and we're here to help you write yours. Whether you're dreaming of a romantic honeymoon escape, a heart-racing adventure, or a relaxing family getaway, we offer a wide range of tour packages designed to create memories that last a lifetime.</p>
-            <p class="mb-4">With a passion for travel and years of experience in the industry, our team carefully curates each itinerary to showcase the beauty, culture, and excitement of every destination.</p>
+            <p class="mb-4">At Manon Lanka Tours, we believe that every journey tells a story, and we're here to help
+              you write yours. Whether you're dreaming of a romantic honeymoon escape, a heart-racing adventure, or a
+              relaxing family getaway, we offer a wide range of tour packages designed to create memories that last a
+              lifetime.</p>
+            <p class="mb-4">With a passion for travel and years of experience in the industry, our team carefully
+              curates each itinerary to showcase the beauty, culture, and excitement of every destination.</p>
             <a href="about.html" class="btn-hero">Learn More</a>
           </div>
         </div>
         <div class="col-lg-6" data-aos="fade-left">
           <div class="about-image">
-            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="About Us">
+            <img
+              src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+              alt="About Us">
           </div>
         </div>
       </div>
@@ -679,15 +817,16 @@
       <div class="features-grid">
         <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
           <div class="feature-icon">
-            <i class="fas fa-shield-alt"></i>
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Safe & Secure">
           </div>
           <h3>Safe & Secure</h3>
-          <p>Your safety is our top priority. We maintain the highest standards of safety in all our tours and accommodations.</p>
+          <p>Your safety is our top priority. We maintain the highest standards of safety in all our tours and
+            accommodations.</p>
         </div>
 
         <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
           <div class="feature-icon">
-            <i class="fas fa-star"></i>
+            <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Premium Quality">
           </div>
           <h3>Premium Quality</h3>
           <p>Experience luxury and comfort with our carefully selected accommodations and premium tour experiences.</p>
@@ -695,7 +834,7 @@
 
         <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
           <div class="feature-icon">
-            <i class="fas fa-users"></i>
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Expert Guides">
           </div>
           <h3>Expert Guides</h3>
           <p>Our experienced local guides provide deep insights into Sri Lanka's culture, history, and hidden gems.</p>
@@ -703,7 +842,7 @@
 
         <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
           <div class="feature-icon">
-            <i class="fas fa-leaf"></i>
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Sustainable Tourism">
           </div>
           <h3>Sustainable Tourism</h3>
           <p>We're committed to sustainable practices that protect the environment and support local communities.</p>
@@ -711,7 +850,7 @@
 
         <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
           <div class="feature-icon">
-            <i class="fas fa-clock"></i>
+            <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="24/7 Support">
           </div>
           <h3>24/7 Support</h3>
           <p>Round-the-clock customer support to ensure your journey is smooth and worry-free from start to finish.</p>
@@ -719,7 +858,7 @@
 
         <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
           <div class="feature-icon">
-            <i class="fas fa-heart"></i>
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Personalized Service">
           </div>
           <h3>Personalized Service</h3>
           <p>Every tour is customized to your preferences, ensuring a truly personal and memorable experience.</p>
@@ -738,7 +877,9 @@
 
       <div class="gallery-grid">
         <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
-          <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Tea Plantations">
+          <img
+            src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+            alt="Tea Plantations">
           <div class="gallery-overlay">
             <h4>Tea Plantations</h4>
             <p>Nuwara Eliya Highlands</p>
@@ -746,7 +887,9 @@
         </div>
 
         <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
-          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Beach">
+          <img
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+            alt="Beach">
           <div class="gallery-overlay">
             <h4>Pristine Beaches</h4>
             <p>Mirissa Coast</p>
@@ -754,7 +897,9 @@
         </div>
 
         <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
-          <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Mountains">
+          <img
+            src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+            alt="Mountains">
           <div class="gallery-overlay">
             <h4>Mountain Trails</h4>
             <p>Ella Rock</p>
@@ -762,7 +907,9 @@
         </div>
 
         <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400">
-          <img src="https://images.unsplash.com/photo-1549366021-9f761d450615?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Wildlife">
+          <img
+            src="https://images.unsplash.com/photo-1549366021-9f761d450615?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+            alt="Wildlife">
           <div class="gallery-overlay">
             <h4>Wildlife Safari</h4>
             <p>Yala National Park</p>
@@ -770,7 +917,9 @@
         </div>
 
         <div class="gallery-item" data-aos="zoom-in" data-aos-delay="500">
-          <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Temple">
+          <img
+            src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+            alt="Temple">
           <div class="gallery-overlay">
             <h4>Ancient Temples</h4>
             <p>Sigiriya Rock Fortress</p>
@@ -778,7 +927,9 @@
         </div>
 
         <div class="gallery-item" data-aos="zoom-in" data-aos-delay="600">
-          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Sunset">
+          <img
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+            alt="Sunset">
           <div class="gallery-overlay">
             <h4>Stunning Sunsets</h4>
             <p>Galle Fort</p>
@@ -795,7 +946,7 @@
         <h2>What Our Clients Say</h2>
         <p>Real experiences from real travelers</p>
       </div>
-      
+
       <div class="row">
         <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100">
           <div class="testimonial-card">
@@ -807,10 +958,12 @@
               <i class="fas fa-star"></i>
             </div>
             <p class="maintxt">
-              "One of the best trips I've ever had! Everything was perfectly organized from start to finish. The guides were knowledgeable and friendly, and the accommodations exceeded our expectations."
+              "One of the best trips I've ever had! Everything was perfectly organized from start to finish. The guides
+              were knowledgeable and friendly, and the accommodations exceeded our expectations."
             </p>
             <div class="d-flex align-items-center pt-3">
-              <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" width="50" class="rounded-circle" alt="Sarah L.">
+              <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
+                width="50" class="rounded-circle" alt="Sarah L.">
               <div class="ms-3">
                 <span class="name">Sarah L.</span>
                 <p class="para mb-0">Adventure Traveler</p>
@@ -829,10 +982,12 @@
               <i class="fas fa-star"></i>
             </div>
             <p class="maintxt">
-              "Incredible service and breathtaking locations. The team went above and beyond to make our honeymoon unforgettable. Highly recommend for any couple!"
+              "Incredible service and breathtaking locations. The team went above and beyond to make our honeymoon
+              unforgettable. Highly recommend for any couple!"
             </p>
             <div class="d-flex align-items-center pt-3">
-              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" width="50" class="rounded-circle" alt="James R.">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
+                width="50" class="rounded-circle" alt="James R.">
               <div class="ms-3">
                 <span class="name">James R.</span>
                 <p class="para mb-0">Honeymoon Couple</p>
@@ -861,7 +1016,8 @@
       <div class="row">
         <div class="col-lg-4 mb-4">
           <h5>Manon Lanka Tours</h5>
-          <p>Your trusted partner for unforgettable Sri Lankan adventures. We specialize in creating personalized travel experiences that showcase the beauty, culture, and excitement of paradise island.</p>
+          <p>Your trusted partner for unforgettable Sri Lankan adventures. We specialize in creating personalized travel
+            experiences that showcase the beauty, culture, and excitement of paradise island.</p>
           <div class="social-links">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
@@ -908,10 +1064,10 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  
+
   <!-- AOS Animation JS -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  
+
   <script>
     // Initialize AOS
     AOS.init({
@@ -936,7 +1092,7 @@
 
     // Scroll to top button
     const scrollTopBtn = document.querySelector('.scroll-top');
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
       if (window.scrollY > 300) {
         scrollTopBtn.classList.add('show');
       } else {
@@ -945,7 +1101,7 @@
     });
 
     // Newsletter subscription
-    document.querySelector('.btn-primary').addEventListener('click', function() {
+    document.querySelector('.btn-primary').addEventListener('click', function () {
       const email = document.querySelector('input[type="email"]').value;
       if (email) {
         alert('Thank you for subscribing to our newsletter!');
@@ -954,4 +1110,5 @@
     });
   </script>
 </body>
+
 </html>
