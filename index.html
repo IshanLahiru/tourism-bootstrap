@@ -309,14 +309,14 @@
     }
 
     .feature-icon {
-      width: 80px;
-      height: 80px;
+      width: 100%;
+      height: 200px;
       border-radius: 0;
       margin: 0 auto 1.5rem;
       overflow: hidden;
       position: relative;
       transition: all 0.3s ease;
-      border: 2px solid var(--border-color);
+      border: 1px solid var(--border-color);
     }
 
     .feature-icon img {
@@ -424,17 +424,39 @@
       background: var(--light-color);
     }
 
+    /* Pinterest-style Testimonials Grid */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
     .testimonial-card {
       background: white;
       border-radius: 0;
       padding: 2rem;
       box-shadow: var(--shadow-sm);
-      transition: all 0.2s ease;
+      transition: all 0.3s ease;
       border: 1px solid var(--border-color);
-      border: none;
-      height: 100%;
       position: relative;
       overflow: hidden;
+      cursor: pointer;
+    }
+
+    /* Varying heights for Pinterest effect */
+    .testimonial-card.tall {
+      grid-row: span 2;
+      padding: 2.5rem;
+    }
+
+    .testimonial-card.wide {
+      grid-column: span 2;
+      padding: 2rem 3rem;
+    }
+
+    .testimonial-card.small {
+      padding: 1.5rem;
     }
 
     .testimonial-card::before {
@@ -446,11 +468,17 @@
       font-family: serif;
       opacity: 0.1;
       color: var(--primary-color);
+      transition: all 0.3s ease;
     }
 
     .testimonial-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .testimonial-card:hover::before {
+      opacity: 0.2;
+      transform: scale(1.1);
     }
 
     .maintxt {
@@ -461,12 +489,22 @@
       margin-bottom: 1.5rem;
       position: relative;
       z-index: 2;
+      transition: color 0.3s ease;
+    }
+
+    .testimonial-card:hover .maintxt {
+      color: var(--primary-color);
     }
 
     .name {
       font-weight: 600;
       color: var(--text-color);
       font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .testimonial-card:hover .name {
+      color: var(--primary-color);
     }
 
     .para {
@@ -480,6 +518,22 @@
       right: 1rem;
       color: var(--accent-color);
       font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .testimonial-card:hover .testimonial-rating {
+      transform: scale(1.1);
+    }
+
+    /* Responsive grid adjustments */
+    @media (max-width: 768px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .testimonial-card.wide {
+        grid-column: span 1;
+      }
     }
 
     /* CTA Section */
@@ -947,51 +1001,181 @@
         <p>Real experiences from real travelers</p>
       </div>
 
-      <div class="row">
-        <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="testimonial-card">
-            <div class="testimonial-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <p class="maintxt">
-              "One of the best trips I've ever had! Everything was perfectly organized from start to finish. The guides
-              were knowledgeable and friendly, and the accommodations exceeded our expectations."
-            </p>
-            <div class="d-flex align-items-center pt-3">
-              <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
-                width="50" class="rounded-circle" alt="Sarah L.">
-              <div class="ms-3">
-                <span class="name">Sarah L.</span>
-                <p class="para mb-0">Adventure Traveler</p>
-              </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card tall" data-aos="fade-up" data-aos-delay="100">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="maintxt">
+            "One of the best trips I've ever had! Everything was perfectly organized from start to finish. The guides
+            were knowledgeable and friendly, and the accommodations exceeded our expectations. The wildlife safari in Yala
+            was absolutely incredible - we saw leopards, elephants, and so much more!"
+          </p>
+          <div class="d-flex align-items-center pt-3">
+            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
+              width="50" class="rounded-circle" alt="Sarah L.">
+            <div class="ms-3">
+              <span class="name">Sarah L.</span>
+              <p class="para mb-0">Adventure Traveler</p>
             </div>
           </div>
         </div>
 
-        <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="testimonial-card">
-            <div class="testimonial-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
+        <div class="testimonial-card small" data-aos="fade-up" data-aos-delay="150">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="maintxt">
+            "Amazing experience! The tea plantations were breathtaking."
+          </p>
+          <div class="d-flex align-items-center pt-3">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+              width="50" class="rounded-circle" alt="Michael T.">
+            <div class="ms-3">
+              <span class="name">Michael T.</span>
+              <p class="para mb-0">Photography Enthusiast</p>
             </div>
-            <p class="maintxt">
-              "Incredible service and breathtaking locations. The team went above and beyond to make our honeymoon
-              unforgettable. Highly recommend for any couple!"
-            </p>
-            <div class="d-flex align-items-center pt-3">
-              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
-                width="50" class="rounded-circle" alt="James R.">
-              <div class="ms-3">
-                <span class="name">James R.</span>
-                <p class="para mb-0">Honeymoon Couple</p>
-              </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card wide" data-aos="fade-up" data-aos-delay="200">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="maintxt">
+            "Incredible service and breathtaking locations. The team went above and beyond to make our honeymoon
+            unforgettable. The beach resorts were perfect, and the cultural tours gave us such deep insights into
+            Sri Lankan heritage. Highly recommend for any couple!"
+          </p>
+          <div class="d-flex align-items-center pt-3">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
+              width="50" class="rounded-circle" alt="James R.">
+            <div class="ms-3">
+              <span class="name">James R.</span>
+              <p class="para mb-0">Honeymoon Couple</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="250">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="maintxt">
+            "The hiking trails in Ella were absolutely stunning. Our guide knew every secret spot and the best viewpoints.
+            The train ride through the mountains was like something from a dream!"
+          </p>
+          <div class="d-flex align-items-center pt-3">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face"
+              width="50" class="rounded-circle" alt="Emma K.">
+            <div class="ms-3">
+              <span class="name">Emma K.</span>
+              <p class="para mb-0">Nature Lover</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card tall" data-aos="fade-up" data-aos-delay="300">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="maintxt">
+            "As a family with young children, we were worried about traveling to Sri Lanka, but Manon Lanka Tours made
+            everything so easy and comfortable. The kids loved the elephant orphanage and the beach activities. The
+            accommodations were family-friendly and the food was amazing. We'll definitely be back!"
+          </p>
+          <div class="d-flex align-items-center pt-3">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face"
+              width="50" class="rounded-circle" alt="David M.">
+            <div class="ms-3">
+              <span class="name">David M.</span>
+              <p class="para mb-0">Family Traveler</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card small" data-aos="fade-up" data-aos-delay="350">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="maintxt">
+            "The ancient temples and historical sites were incredible. So much history!"
+          </p>
+          <div class="d-flex align-items-center pt-3">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=100&h=100&fit=crop&crop=face"
+              width="50" class="rounded-circle" alt="Lisa P.">
+            <div class="ms-3">
+              <span class="name">Lisa P.</span>
+              <p class="para mb-0">History Buff</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="maintxt">
+            "The surfing lessons in Arugam Bay were perfect for beginners. The instructors were patient and the waves
+            were ideal. The beach accommodation was right on the shore - waking up to the sound of waves was magical!"
+          </p>
+          <div class="d-flex align-items-center pt-3">
+            <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=100&h=100&fit=crop&crop=face"
+              width="50" class="rounded-circle" alt="Alex B.">
+            <div class="ms-3">
+              <span class="name">Alex B.</span>
+              <p class="para mb-0">Surfing Enthusiast</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card wide" data-aos="fade-up" data-aos-delay="450">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="maintxt">
+            "We booked a luxury tour and it exceeded all expectations. From the private transfers to the exclusive
+            dining experiences, every detail was perfect. The sunset cruise in Galle was the highlight of our trip.
+            Manon Lanka Tours truly understands luxury travel!"
+          </p>
+          <div class="d-flex align-items-center pt-3">
+            <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop&crop=face"
+              width="50" class="rounded-circle" alt="Sophie W.">
+            <div class="ms-3">
+              <span class="name">Sophie W.</span>
+              <p class="para mb-0">Luxury Traveler</p>
             </div>
           </div>
         </div>
