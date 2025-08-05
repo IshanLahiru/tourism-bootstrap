@@ -4,639 +4,954 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tourism Website</title>
+  <title>Manon Lanka Tours - Discover Sri Lanka</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- AOS Animation Library -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <!-- Font Awesome (optional for icons) -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary-color: #007AFF;
+      --secondary-color: #5856D6;
+      --accent-color: #FF9500;
+      --success-color: #34C759;
+      --warning-color: #FF3B30;
+      --dark-color: #1D1D1F;
+      --light-color: #F5F5F7;
+      --text-color: #1D1D1F;
+      --text-secondary: #86868B;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      overflow-x: hidden;
+      background-color: #FFFFFF;
     }
 
-    #preloader {
-      position: fixed;
-      inset: 0;
-      /* shorthand for top:0; right:0; bottom:0; left:0 */
-      z-index: 9999;
-      background-color: white;
-      /* or rgba(255,255,255,0.9) if semi-transparent */
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    /* Navigation */
+    .navbar {
+      background: rgba(255, 255, 255, 0.8) !important;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: all 0.3s ease;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
 
-    /* Base padding for small screens */
-    .navbar-padding {
-      padding-left: 1rem;
-      padding-right: 1rem;
+    .navbar-brand {
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: var(--primary-color) !important;
+      letter-spacing: -0.5px;
     }
 
-    /* For screens wider than 1200px (large screens) */
-    @media (min-width: 1200px) {
-      .navbar-padding {
-        padding-left: 15vw;
-        padding-right: 15vw;
-      }
-    }
-
-
-    .carousel-item img {
-      height: 90vh;
-      object-fit: cover;
-    }
-
-    .package-card,
-    .attraction-card,
-    .testimonial-card {
-      transition: transform 0.3s ease-in-out;
-    }
-
-    .package-card:hover,
-    .attraction-card:hover,
-    .testimonial-card:hover {
-      transform: scale(1.03);
-    }
-
-    /* Initial transparent navbar with white text */
-    .navbar-custom {
-      background-color: transparent;
-      color: white;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    .navbar-custom .nav-link,
-    .navbar-custom .navbar-brand {
-      color: white !important;
-      text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
-      transition: color 0.3s ease, text-shadow 0.3s ease;
-    }
-
-    /* On scroll: white background with dark text */
-    .navbar-scrolled {
-      background-color: white !important;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .navbar-scrolled .nav-link,
-    .navbar-scrolled .navbar-brand {
-      color: black !important;
-      text-shadow: none;
-    }
-
-    #tourCarousel {
-      height: 100vh;
+    .nav-link {
+      font-weight: 500;
+      color: var(--text-color) !important;
+      margin: 0 0.5rem;
+      transition: all 0.3s ease;
       position: relative;
-      overflow: hidden;
+      padding: 0.5rem 1rem !important;
+      border-radius: 8px;
     }
 
-    #tourCarousel .carousel-item {
-      height: 100vh;
+    .nav-link:hover {
+      color: var(--primary-color) !important;
+      background: rgba(0, 122, 255, 0.1);
     }
 
-    #tourCarousel .carousel-item img {
-      object-fit: cover;
+    .nav-link.active {
+      color: var(--primary-color) !important;
+      background: rgba(0, 122, 255, 0.1);
+    }
+
+            /* Hero Section */
+        .hero-section {
+          height: 100vh;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .hero-slide {
+          height: 100vh;
+          background-size: cover;
+          background-position: center;
+          background-attachment: fixed;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          color: white;
+          position: relative;
+        }
+
+        .hero-slide::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+          z-index: 1;
+        }
+
+        .hero-content {
+          position: relative;
+          z-index: 2;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+          width: 60px;
+          height: 60px;
+          background: rgba(255, 255, 255, 0.2);
+          border-radius: 50%;
+          border: none;
+          top: 50%;
+          transform: translateY(-50%);
+          backdrop-filter: blur(10px);
+        }
+
+        .carousel-control-prev {
+          left: 30px;
+        }
+
+        .carousel-control-next {
+          right: 30px;
+        }
+
+        .carousel-indicators {
+          bottom: 30px;
+        }
+
+        .carousel-indicators button {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.5);
+          border: none;
+          margin: 0 5px;
+        }
+
+        .carousel-indicators button.active {
+          background: var(--primary-color);
+        }
+
+    .hero-content h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      letter-spacing: -1px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-content p {
+      font-size: 1.5rem;
+      margin-bottom: 2.5rem;
+      font-weight: 400;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-hero {
+      background: var(--primary-color);
+      color: white;
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+      box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
+    }
+
+    .btn-hero:hover {
+      background: #0056CC;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(0, 122, 255, 0.4);
+    }
+
+    /* Section Styling */
+    .section {
+      padding: 6rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--text-color);
+      margin-bottom: 1rem;
+      letter-spacing: -1px;
+    }
+
+    .section-title p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+      font-weight: 400;
+    }
+
+    /* About Section */
+    .about-section {
+      background: var(--light-color);
+    }
+
+    .about-content {
+      background: white;
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
       height: 100%;
     }
 
-    #tourCarousel::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 150px;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #ffffff 100%);
-      z-index: 10;
-    }
-
-    .carousel-caption {
-      z-index: 20;
-      position: absolute;
-      bottom: 20%;
-    }
-
-    /* Slight transparent light text */
-    .text-light-opacity {
-      color: rgba(224, 224, 224, 0.85);
-    }
-
-    /* Image hover zoom effect */
-    .img-hover-zoom {
-      transition: transform 0.4s ease;
-      cursor: pointer;
-    }
-
-    .img-hover-zoom:hover,
-    .img-hover-zoom:focus {
-      transform: scale(1.05);
-    }
-
-    /* Button shadow for subtle pop */
-    .btn-info {
-      box-shadow: 0 4px 10px rgba(13, 110, 253, 0.4);
-    }
-
-    .about-section {
-      height: 100vh;
-      /* Full viewport height */
-      padding: 80px 20px;
-      background-color: #f8f9fa;
-      /* Light background (optional) */
-      font-size: 1.5rem;
-      /* Increase text size */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      /* Center content vertically */
-      align-items: left;
-      /* Center content horizontally */
-      text-align: left;
-    }
-
-    .gallary-section {
-      height: 100vh;
-      background-color: #f8f9fa;
-      display: flex;
-      align-items: center;
-      /* vertical centering */
-      justify-content: center;
-      /* horizontal centering */
-      padding: 60px 20px;
-    }
-
-    /* Responsive fallback for smaller screens */
-    @media (max-width: 768px) {
-      .gallary-section {
-        height: auto;
-        padding: 40px 10px;
-      }
-    }
-
-    .bento-item {
-      height: 200px;
-      border-radius: 15px;
+    .about-image {
+      border-radius: 20px;
       overflow: hidden;
-      position: relative;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       transition: transform 0.3s ease;
     }
 
-.bento-item:hover {
-    transform: scale(1.05);
-  }
+    .about-image:hover img {
+      transform: scale(1.05);
+    }
 
-  .bento-tall {
-    height: 410px;
-  }
+    /* Features Section */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
 
-  .bento-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-  }
+    .feature-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
 
-  .bento-item:hover img {
-    transform: scale(1.1);
-  }
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
 
-  .bento-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 20px;
-    opacity: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: left;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    transform: translateY(10px);
-  }
-
-  .bento-item:hover .bento-content {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-
-    footer {
-      background-color: #343a40;
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: white;
-      padding: 40px 0;
+      font-size: 2rem;
+      margin: 0 auto 1.5rem;
     }
 
-    footer a {
-      color: #ddd;
+    .feature-card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .feature-card p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Gallery Section */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 300px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+      color: white;
+      padding: 2rem 1.5rem 1.5rem;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+
+    /* Testimonials Section */
+    .testimonials-section {
+      background: var(--light-color);
+    }
+
+    .testimonial-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: none;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 1rem;
+      left: 1.5rem;
+      font-size: 4rem;
+      font-family: serif;
+      opacity: 0.1;
+      color: var(--primary-color);
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .maintxt {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: var(--text-color);
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .name {
+      font-weight: 600;
+      color: var(--text-color);
+      font-size: 1rem;
+    }
+
+    .para {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .testimonial-rating {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      color: var(--accent-color);
+      font-size: 1rem;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      text-align: center;
+    }
+
+    .cta-content h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      letter-spacing: -1px;
+    }
+
+    .cta-content p {
+      font-size: 1.25rem;
+      margin-bottom: 2.5rem;
+      opacity: 0.9;
+    }
+
+    .btn-cta {
+      background: white;
+      color: var(--primary-color);
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 1.1rem;
       text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
     }
 
-    footer a:hover {
-      text-decoration: underline;
+    .btn-cta:hover {
+      background: var(--light-color);
+      color: var(--primary-color);
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark-color);
+      color: white;
+      padding: 4rem 0 2rem;
+    }
+
+    .footer h5 {
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+
+    .footer p, .footer a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer a:hover {
+      color: white;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      background: var(--primary-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: var(--accent-color);
+      transform: translateY(-3px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-content p {
+        font-size: 1.2rem;
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+      }
+
+      .about-content {
+        padding: 2rem;
+      }
+
+      .feature-card {
+        padding: 2rem;
+      }
+
+      .testimonial-card {
+        padding: 2rem;
+      }
+
+      .cta-content h2 {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .section {
+        padding: 4rem 0;
+      }
+
+      .gallery-item {
+        height: 250px;
+      }
+    }
+
+    /* Scroll to top button */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+    }
+
+    .scroll-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-top:hover {
+      background: var(--secondary-color);
+      transform: translateY(-3px);
     }
   </style>
 </head>
 
-<body data-bs-spy="scroll" data-bs-target="#navbar">
-  <!-- Preloader -->
-  <div id="preloader" class="d-flex align-items-center justify-content-center">
-    <div class="spinner-border text-primary" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-  </div>
-
-  <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg fixed-top navbar-custom">
-    <div class="container-fluid d-flex align-items-center navbar-padding">
-      <a class="navbar-brand me-auto fw-bold fs-4 brand-text" href="#">
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <i class="fas fa-map-marked-alt me-2"></i>
         Manon Lanka Tours
       </a>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
-        <ul class="navbar-nav mb-2 mb-lg-0">
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#home" id="homeDropdown" role="button">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#about" id="aboutUsLink" role="button">About Us</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#packages" id="homeDropdown" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              Tour Packages
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="homeDropdown">
-              <li><a class="dropdown-item" href="#">Sub Home 1</a></li>
-              <li><a class="dropdown-item" href="#">Sub Home 2</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#things-to-do" id="linkDropdown" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              Things to Do
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="linkDropdown">
-              <li><a class="dropdown-item" href="#">Sub Link 1</a></li>
-              <li><a class="dropdown-item" href="#">Sub Link 2</a></li>
-            </ul>
+            <a class="nav-link active" href="index.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#top-attractions" id="TopAttractionsLink" role="button">Top Attractions</a>
+            <a class="nav-link" href="about.html">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" id="ContactUsLink" role="button">Contact Us</a>
+            <a class="nav-link" href="tourPackages.html">Packages</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="thingsToDo.html">Things to Do</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="topAttractions.html">Attractions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Carousel -->
-  <div id="home" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-  
-      <div class="carousel-item active">
-        <img
-          src="https://images.unsplash.com/photo-1609242030544-f2a37bab739c?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          class="d-block w-100" alt="Beach">
-        <div class="carousel-overlay"></div>
-        <div class="carousel-caption d-none d-md-block">
-          <h1>Explore the World</h1>
-          <p>Your dream vacation starts here.</p>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1609242030544-f2a37bab739c?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+              <h1>Discover Sri Lanka</h1>
+              <p>Experience the magic of paradise island with unforgettable adventures</p>
+              <a href="tourPackages.html" class="btn-hero">Explore Packages</a>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1507296993015-167a20c29988?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+              <h1>Explore Paradise</h1>
+              <p>From pristine beaches to misty mountains, beauty awaits at every turn</p>
+              <a href="topAttractions.html" class="btn-hero">View Attractions</a>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1657946857561-f42916b66712?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+              <h1>Adventure Awaits</h1>
+              <p>Embark on thrilling journeys through ancient temples and wild landscapes</p>
+              <a href="thingsToDo.html" class="btn-hero">Start Adventure</a>
+            </div>
+          </div>
         </div>
       </div>
-  
-      <div class="carousel-item">
-        <img
-          src="https://images.unsplash.com/photo-1507296993015-167a20c29988?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          class="d-block w-100" alt="Mountains">
-        <div class="carousel-overlay"></div>
-        <div class="carousel-caption d-none d-md-block">
-          <h1>Explore the World</h1>
-          <p>Your dream vacation starts here.</p>
-        </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
       </div>
-  
-      <div class="carousel-item">
-        <img
-          src="https://images.unsplash.com/photo-1657946857561-f42916b66712?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          class="d-block w-100" alt="City">
-        <div class="carousel-overlay"></div>
-        <div class="carousel-caption d-none d-md-block">
-          <h1>Explore the World</h1>
-          <p>Your dream vacation starts here.</p>
-        </div>
-      </div>
-  
     </div>
-  
-    <button class="carousel-control-prev" type="button" data-bs-target="#home" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#home" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
-  </div>
+  </section>
 
-  <!-- Welcome Section -->
-  <section class="about-section" id="about"
-    style="background: linear-gradient(to bottom, #ffffff, #ffffff); color: #e0e0e0;" class="py-5">
+  <!-- About Section -->
+  <section class="section about-section">
     <div class="container">
-      <div class="row align-items-center gy-4">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Welcome to Manon Lanka Tours</h2>
+        <p>Your gateway to unforgettable journeys in the heart of paradise</p>
+      </div>
 
-        <!-- Left: Text Content -->
-        <div class="col-12 col-md-6" data-aos="fade-right" data-aos-duration="1000">
-          <h5 class="display-4 fw-bold text-secondary-emphasis mb-4">Manon Lanka Tours</h5>
-          <p class="fs-5 text-secondary-emphasis mb-4" style="line-height: 1.4;">
-            Welcome to Manon Tour – Your Gateway to Unforgettable Journeys!
-          </p>
-          <p class="fs-5 text-secondary-emphasis mb-4" style="line-height: 1.4;">
-            At Manon Tour, we believe that every journey tells a story, and we’re here to help you write yours. Whether
-            you're
-            dreaming of a romantic honeymoon escape, a heart-racing adventure, or a relaxing family getaway, we offer a
-            wide range
-            of tour packages designed to create memories that last a lifetime.
-          </p>
-          <p class="fs-5 text-secondary-emphasis mb-4" style="line-height: 1.4;">
-            With a passion for travel and years of experience in the industry, our team carefully curates each itinerary
-            to showcase
-            the beauty, culture, and excitement of every destination. From tropical beaches to misty mountains, and
-            historical
-            landmarks to hidden gems, Manon Tour ensures your trip is smooth, safe, and full of unforgettable moments.
-          </p>
-          <p class="fs-5 text-secondary-emphasis mb-4" style="line-height: 1.4;">
-            We pride ourselves on personalized service, flexible plans, and exceptional value. Whether you're traveling
-            solo, with a
-            partner, or as a group, we’re here to make your travel dreams a reality. Let Manon Tour be your trusted
-            travel
-            partner—because life is meant to be explored.
-          </p>
-          <p class="fs-6 text-secondary-emphasis mb-4" style="line-height: 1.7;">
-            <a href="#" class="link-underline-light">Learn more about us
-              <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </p>
+      <div class="row align-items-center">
+        <div class="col-lg-6" data-aos="fade-right">
+          <div class="about-content">
+            <h3 class="mb-4">Your Trusted Travel Partner</h3>
+            <p class="mb-4">At Manon Lanka Tours, we believe that every journey tells a story, and we're here to help you write yours. Whether you're dreaming of a romantic honeymoon escape, a heart-racing adventure, or a relaxing family getaway, we offer a wide range of tour packages designed to create memories that last a lifetime.</p>
+            <p class="mb-4">With a passion for travel and years of experience in the industry, our team carefully curates each itinerary to showcase the beauty, culture, and excitement of every destination.</p>
+            <a href="about.html" class="btn-hero">Learn More</a>
+          </div>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="About Us">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Features Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Why Choose Us</h2>
+        <p>Experience the difference with our premium travel services</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Safe & Secure</h3>
+          <p>Your safety is our top priority. We maintain the highest standards of safety in all our tours and accommodations.</p>
         </div>
 
-        <!-- Right: Image -->
-        <div class="col-12 col-md-6" data-aos="fade-left" data-aos-duration="1000">
-          <img
-            src="https://plus.unsplash.com/premium_photo-1663054911397-c7fe60ec3849?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Beautiful scenic tour destination" class="img-fluid rounded shadow-lg img-hover-zoom" />
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="feature-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <h3>Premium Quality</h3>
+          <p>Experience luxury and comfort with our carefully selected accommodations and premium tour experiences.</p>
         </div>
 
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="feature-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Expert Guides</h3>
+          <p>Our experienced local guides provide deep insights into Sri Lanka's culture, history, and hidden gems.</p>
+        </div>
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="feature-icon">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <h3>Sustainable Tourism</h3>
+          <p>We're committed to sustainable practices that protect the environment and support local communities.</p>
+        </div>
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+          <div class="feature-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <h3>24/7 Support</h3>
+          <p>Round-the-clock customer support to ensure your journey is smooth and worry-free from start to finish.</p>
+        </div>
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
+          <div class="feature-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h3>Personalized Service</h3>
+          <p>Every tour is customized to your preferences, ensuring a truly personal and memorable experience.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Gallery Section -->
-  <section id="top-attractions" class="gallary-section d-flex align-items-center">
-    <div class="container my-5">
-      <div class="d-flex justify-content align-items-center">
-        <h1 class="fw-bold display-5 text-dark mb-0">
-          Top Attractions <span style="color: #0d6efd;">|</span>
-        </h1>
-        <div class="text-muted fst-italic" style="max-width: 50%;">
-          From golden coasts to<br>
-          mighty peaks – beauty at every turn
+  <section class="section" style="background: var(--light-color);">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Explore Sri Lanka</h2>
+        <p>Discover the breathtaking beauty and diverse experiences awaiting you</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
+          <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Tea Plantations">
+          <div class="gallery-overlay">
+            <h4>Tea Plantations</h4>
+            <p>Nuwara Eliya Highlands</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Beach">
+          <div class="gallery-overlay">
+            <h4>Pristine Beaches</h4>
+            <p>Mirissa Coast</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
+          <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Mountains">
+          <div class="gallery-overlay">
+            <h4>Mountain Trails</h4>
+            <p>Ella Rock</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400">
+          <img src="https://images.unsplash.com/photo-1549366021-9f761d450615?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Wildlife">
+          <div class="gallery-overlay">
+            <h4>Wildlife Safari</h4>
+            <p>Yala National Park</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-aos="zoom-in" data-aos-delay="500">
+          <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Temple">
+          <div class="gallery-overlay">
+            <h4>Ancient Temples</h4>
+            <p>Sigiriya Rock Fortress</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-aos="zoom-in" data-aos-delay="600">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Sunset">
+          <div class="gallery-overlay">
+            <h4>Stunning Sunsets</h4>
+            <p>Galle Fort</p>
+          </div>
         </div>
       </div>
-      <hr>
-      <div class="row g-4">
-        <!-- Large item -->
-        <div class="col-md-8">
-          <div class="bento-item bento-tall">
-            <img
-              src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHxuYXR1cmV8ZW58MHwwfHx8MTcyMTA0MjYwMXww&ixlib=rb-4.0.3&q=80&w=1080"
-              alt="Nature">
-            <div class="bento-content">
-              <h3>Explore Nature</h3>
-              <p>Discover the beauty of the natural world</p>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section testimonials-section">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>What Our Clients Say</h2>
+        <p>Real experiences from real travelers</p>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="testimonial-card">
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
             </div>
-          </div>
-        </div>
-        <!-- Two small items -->
-        <div class="col-md-4">
-          <div class="row g-4">
-            <div class="col-12">
-              <div class="bento-item">
-                <img
-                  src="https://images.unsplash.com/photo-1493770348161-369560ae357d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw2fHxmb29kfGVufDB8MHx8fDE3MjEwNDI2MTR8MA&ixlib=rb-4.0.3&q=80&w=1080"
-                  alt="Food">
-                <div class="bento-content">
-                  <h4>Culinary Delights</h4>
-                </div>
-              </div>
-            </div>
-            <div class="col-12">
-              <div class="bento-item">
-                <img
-                  src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw1fHx0ZWNobm9sb2d5fGVufDB8MHx8fDE3MjEwNDI2Mjh8MA&ixlib=rb-4.0.3&q=80&w=1080"
-                  alt="Technology">
-                <div class="bento-content">
-                  <h4>Tech Innovations</h4>
-                </div>
+            <p class="maintxt">
+              "One of the best trips I've ever had! Everything was perfectly organized from start to finish. The guides were knowledgeable and friendly, and the accommodations exceeded our expectations."
+            </p>
+            <div class="d-flex align-items-center pt-3">
+              <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" width="50" class="rounded-circle" alt="Sarah L.">
+              <div class="ms-3">
+                <span class="name">Sarah L.</span>
+                <p class="para mb-0">Adventure Traveler</p>
               </div>
             </div>
           </div>
         </div>
-        <!-- Medium items -->
-        <div class="col-md-4">
-          <div class="bento-item">
-            <img
-              src="https://images.unsplash.com/photo-1503220317375-aaad61436b1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw1fHx0cmF2ZWx8ZW58MHwwfHx8MTcyMTA0MjY0MXww&ixlib=rb-4.0.3&q=80&w=1080"
-              alt="Travel">
-            <div class="bento-content">
-              <h4>Travel Adventures</h4>
+
+        <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="testimonial-card">
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
             </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="bento-item">
-            <img
-              src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHxhcnR8ZW58MHwwfHx8MTcyMTA0MjY5Nnww&ixlib=rb-4.0.3&q=80&w=1080"
-              alt="Art">
-            <div class="bento-content">
-              <h4>Artistic Expressions</h4>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="bento-item">
-            <img
-              src="https://images.unsplash.com/photo-1626947346165-4c2288dadc2a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw0fHxzaG9lfGVufDB8MHx8fDE3MjEwNDEzNjd8MA&ixlib=rb-4.0.3&q=80&w=1080"
-              alt="Sport">
-            <div class="bento-content">
-              <h4>Sports & Fitness</h4>
+            <p class="maintxt">
+              "Incredible service and breathtaking locations. The team went above and beyond to make our honeymoon unforgettable. Highly recommend for any couple!"
+            </p>
+            <div class="d-flex align-items-center pt-3">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" width="50" class="rounded-circle" alt="James R.">
+              <div class="ms-3">
+                <span class="name">James R.</span>
+                <p class="para mb-0">Honeymoon Couple</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-  
-  <!-- Tour packages section -->
-  <section class="container my-5">
-    <div class="text-center mb-4">
-      <h2 class="fw-bold">Tour Packages</h2>
-      <p class="text-muted">Explore our curated experiences</p>
-    </div>
-  
-    <div class="row g-4">
-      <!-- Card 1: Cultural Tours -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm border-0">
-          <img src="https://images.unsplash.com/photo-1612862862126-865765df2ded?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="Cultural Tours">
-          <div class="card-body">
-            <h5 class="card-title fw-bold">Cultural Tours</h5>
-            <p class="card-text text-muted">
-              Where tradition lives on in every stone and smile. Discover the ancient cities, sacred temples, and UNESCO
-              heritage sites of Sri Lanka. Immerse yourself in centuries-old customs, vibrant festivals, and local
-              artistry that define the island's rich cultural heritage.
-            </p>
-          </div>
-        </div>
-      </div>
-  
-      <!-- Card 2: Honeymoon Tours -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm border-0">
-          <img src="https://images.unsplash.com/photo-1496602910407-bacda74a0fe4?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="Honeymoon Tours">
-          <div class="card-body">
-            <h5 class="card-title fw-bold">Honeymoon Tours</h5>
-            <p class="card-text text-muted">
-              Where your forever begins under golden sunsets. Sri Lanka offers dreamy getaways for newlyweds – romantic
-              beach resorts, misty hill country retreats, and candlelit dinners beside the Indian Ocean. Create
-              unforgettable memories in paradise.
-            </p>
-          </div>
-        </div>
-      </div>
-  
-      <!-- Card 3: Bird Watching -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm border-0">
-          <img src="https://images.unsplash.com/photo-1602538715538-9c034a2f8043?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="Bird Watching">
-          <div class="card-body">
-            <h5 class="card-title fw-bold">Bird Watching</h5>
-            <p class="card-text text-muted">
-              Whispers of wings in a tropical Eden. Home to over 400 bird species, Sri Lanka is a bird lover’s haven. From
-              rainforests to wetlands, spot vibrant endemics and rare migratory species across the island’s diverse
-              ecosystems.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    <!-- More Tour Packages Button -->
-    <div class="text-center mt-5">
-      <a href="tours.html" class="text-primary text-decoration-none fw-semibold">
-        More Tour Packages
-        <i class="fas fa-arrow-right ms-2"></i>
-      </a>
-    </div>
-  </section>
 
-
-
-  <!-- Testimonials -->
-  <section class="py-5 bg-light" id="testimonials">
-    <div class="container" data-aos="fade-up">
-      <h2 class="text-center mb-4">What Our Clients Say</h2>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card testimonial-card p-3">
-            <p>"One of the best trips I’ve ever had! Everything was well organized."</p>
-            <small class="text-muted">- Sarah L.</small>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card testimonial-card p-3">
-            <p>"Incredible service and beautiful locations. Highly recommend!"</p>
-            <small class="text-muted">- James R.</small>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card testimonial-card p-3">
-            <p>"A perfect getaway from the city. Loved every moment!"</p>
-            <small class="text-muted">- Meera P.</small>
-          </div>
-        </div>
+  <!-- CTA Section -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-content" data-aos="fade-up">
+        <h2>Ready to Start Your Adventure?</h2>
+        <p>Join thousands of travelers who have discovered the magic of Sri Lanka with us</p>
+        <a href="contact.html" class="btn-cta">Get Started Today</a>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer>
+  <footer class="footer">
     <div class="container">
-      <div class="row g-4">
-        <div class="col-md-4">
-          <h5>About Us</h5>
-          <p>We are a trusted travel agency helping people explore the beauty of the world with tailored packages and
-            expert guidance.</p>
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <h5>Manon Lanka Tours</h5>
+          <p>Your trusted partner for unforgettable Sri Lankan adventures. We specialize in creating personalized travel experiences that showcase the beauty, culture, and excitement of paradise island.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-lg-2 col-md-6 mb-4">
           <h5>Quick Links</h5>
           <ul class="list-unstyled">
-            <li><a href="#packages">Tour Packages</a></li>
-            <li><a href="#attractions">Top Attractions</a></li>
-            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="tourPackages.html">Tour Packages</a></li>
+            <li><a href="thingsToDo.html">Things to Do</a></li>
+            <li><a href="topAttractions.html">Attractions</a></li>
           </ul>
         </div>
-        <div class="col-md-4">
-          <h5>Contact Us</h5>
-          <p>Email: travel@explore.com</p>
-          <p>Phone: +1 234 567 890</p>
-          <p>Address: 123 Travel Street, Wander City</p>
-          <div>
-            <a href="#"><i class="fab fa-facebook fa-lg me-2"></i></a>
-            <a href="#"><i class="fab fa-instagram fa-lg me-2"></i></a>
-            <a href="#"><i class="fab fa-twitter fa-lg"></i></a>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h5>Contact Info</h5>
+          <p><i class="fas fa-map-marker-alt me-2"></i> 123 Travel Street, Colombo, Sri Lanka</p>
+          <p><i class="fas fa-phone me-2"></i> +94 11 234 5678</p>
+          <p><i class="fas fa-envelope me-2"></i> info@manonlankatours.com</p>
+        </div>
+        <div class="col-lg-3 mb-4">
+          <h5>Newsletter</h5>
+          <p>Subscribe to our newsletter for travel tips and special offers.</p>
+          <div class="input-group">
+            <input type="email" class="form-control" placeholder="Your email">
+            <button class="btn btn-primary" type="button">Subscribe</button>
           </div>
         </div>
       </div>
+      <hr class="my-4">
+      <div class="text-center">
+        <p>&copy; 2024 Manon Lanka Tours. All rights reserved.</p>
+      </div>
     </div>
   </footer>
+
+  <!-- Scroll to Top Button -->
+  <a href="#top" class="scroll-top">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- AOS Animation JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  
   <script>
-    window.addEventListener("load", function () {
-      const preloader = document.getElementById("preloader");
-      if (preloader) {
-        preloader.style.transition = "opacity 0.5s ease";
-        preloader.style.opacity = "0";
-        setTimeout(() => {
-          preloader.remove(); // Remove after fade
-        }, 500); // Match fade duration
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Scroll to top button
+    const scrollTopBtn = document.querySelector('.scroll-top');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 300) {
+        scrollTopBtn.classList.add('show');
+      } else {
+        scrollTopBtn.classList.remove('show');
       }
     });
-  </script>
 
-  <!-- Bootstrap JS + AOS JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <!-- ✅ JavaScript to control preloader -->
-
-
-  <script>
-    AOS.init();
-  </script>
-  <script>
-    window.addEventListener('scroll', function () {
-      const navbar = document.querySelector('.navbar');
-      if (window.scrollY > 50) {
-        navbar.classList.add('navbar-scrolled');
-      } else {
-        navbar.classList.remove('navbar-scrolled');
+    // Newsletter subscription
+    document.querySelector('.btn-primary').addEventListener('click', function() {
+      const email = document.querySelector('input[type="email"]').value;
+      if (email) {
+        alert('Thank you for subscribing to our newsletter!');
+        document.querySelector('input[type="email"]').value = '';
       }
     });
   </script>
 </body>
-
 </html>
