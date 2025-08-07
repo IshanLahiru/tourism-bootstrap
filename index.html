@@ -435,7 +435,7 @@
       object-position: center;
     }
 
-    /* Fix for viewport height on mobile */
+    /* Mobile Hero Optimizations */
     @media (max-width: 768px) {
 
       .hero-section,
@@ -445,8 +445,208 @@
       .hero-slide {
         height: 100vh;
         width: 100vw;
-        min-height: 100vh;
+        min-height: 600px;
         min-width: 100vw;
+      }
+
+      .hero-content {
+        padding: 0 var(--spacing-lg);
+        text-align: center;
+        max-width: 100%;
+      }
+
+      .hero-content h1 {
+        font-size: 1.75rem;
+        line-height: 1.2;
+        margin-bottom: var(--spacing-md);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .hero-content p {
+        font-size: var(--font-size-sm);
+        line-height: 1.5;
+        margin-bottom: var(--spacing-lg);
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      .btn-hero {
+        padding: 0.875rem 1.5rem;
+        font-size: var(--font-size-sm);
+        width: auto;
+        min-width: 160px;
+      }
+
+      /* Mobile Carousel Controls */
+      .carousel-control-prev,
+      .carousel-control-next {
+        width: 35px;
+        height: 35px;
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 15;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .carousel-control-prev {
+        left: 8px;
+      }
+
+      .carousel-control-next {
+        right: 8px;
+      }
+
+      /* Adjust hero content to avoid control overlap */
+      .hero-content {
+        margin-left: 60px;
+        margin-right: 60px;
+        max-width: calc(100% - 120px);
+        text-align: center;
+      }
+
+      .hero-content h1 {
+        text-align: center;
+      }
+
+      .hero-content p {
+        text-align: center;
+      }
+
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        width: 20px;
+        height: 20px;
+      }
+
+      /* Mobile Progress Bar */
+      .carousel-progress {
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        max-width: 300px;
+      }
+
+      .progress-bar {
+        height: 3px;
+      }
+    }
+
+    /* Tablet Hero Optimizations */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .hero-content h1 {
+        font-size: 2.25rem;
+      }
+
+      .hero-content p {
+        font-size: var(--font-size-base);
+      }
+
+      .btn-hero {
+        padding: 1rem 2rem;
+        font-size: var(--font-size-base);
+      }
+
+      .carousel-control-prev,
+      .carousel-control-next {
+        width: 50px;
+        height: 50px;
+      }
+    }
+
+    /* Small Mobile Optimizations */
+    @media (max-width: 480px) {
+      .hero-section {
+        min-height: 500px;
+      }
+
+      .hero-content h1 {
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .hero-content p {
+        font-size: var(--font-size-xs);
+        margin-bottom: var(--spacing-md);
+      }
+
+      .btn-hero {
+        padding: 0.75rem 1.25rem;
+        font-size: var(--font-size-xs);
+        min-width: 140px;
+      }
+
+      .carousel-control-prev,
+      .carousel-control-next {
+        width: 30px;
+        height: 30px;
+        left: 5px;
+        right: 5px;
+      }
+
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        width: 14px;
+        height: 14px;
+      }
+
+      /* Further adjust hero content for small mobile */
+      .hero-content {
+        margin-left: 45px;
+        margin-right: 45px;
+        max-width: calc(100% - 90px);
+        text-align: center;
+      }
+
+      .carousel-progress {
+        bottom: 15px;
+        width: 90%;
+      }
+    }
+
+    /* Landscape Mobile Optimizations */
+    @media (max-width: 768px) and (orientation: landscape) {
+      .hero-section {
+        height: 100vh;
+        min-height: 400px;
+      }
+
+      .hero-content {
+        padding: 0 var(--spacing-md);
+        margin-left: 60px;
+        margin-right: 60px;
+        max-width: calc(100% - 120px);
+      }
+
+      .hero-content h1 {
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-xs);
+      }
+
+      .hero-content p {
+        font-size: var(--font-size-xs);
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .btn-hero {
+        padding: 0.625rem 1.25rem;
+        font-size: var(--font-size-xs);
+      }
+
+      /* Landscape carousel controls */
+      .carousel-control-prev,
+      .carousel-control-next {
+        width: 45px;
+        height: 45px;
+      }
+
+      .carousel-control-prev {
+        left: 8px;
+      }
+
+      .carousel-control-next {
+        right: 8px;
       }
     }
 
@@ -594,9 +794,31 @@
 
     .carousel-progress .progress-bar {
       height: 100%;
-      background: #F59E0B;
+      background: linear-gradient(90deg, #1E40AF 0%, #F59E0B 100%);
       width: 0%;
       transition: width 0.1s linear;
+      box-shadow: 0 0 10px rgba(30, 64, 175, 0.5);
+    }
+
+    /* Touch-friendly enhancements */
+    .carousel-control-prev,
+    .carousel-control-next {
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    /* Swipe gestures for mobile */
+    @media (max-width: 768px) {
+      .carousel {
+        touch-action: pan-y pinch-zoom;
+      }
+
+      .carousel-control-prev,
+      .carousel-control-next {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+      }
     }
 
     .hero-content h1 {
@@ -2045,21 +2267,80 @@
 
 
       .tour-packages-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        gap: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        margin: var(--spacing-lg) 0;
       }
 
       .tour-package-card {
-        height: 250px;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+
+      .tour-package-card {
+        height: 300px;
         grid-column: 1 / -1 !important;
         grid-row: auto !important;
+        margin-bottom: 0;
+      }
+
+      .package-overlay {
+        padding: var(--spacing-lg);
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+      }
+
+      .package-overlay h3 {
+        font-size: var(--font-size-lg);
+        margin-bottom: var(--spacing-xs);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .package-duration {
+        font-size: var(--font-size-sm);
+        margin-bottom: var(--spacing-sm);
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      .package-link {
+        font-size: var(--font-size-sm);
+        padding: 0.5rem 1rem;
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 0;
+        backdrop-filter: blur(5px);
+        transition: all 0.3s ease;
+      }
+
+      .package-link:hover {
+        background: rgba(255, 255, 255, 0.3);
+        color: white;
+      }
+
+      .featured-tag {
+        top: 0.75rem;
+        left: 0.75rem;
+        padding: 0.375rem 0.75rem;
+        font-size: var(--font-size-xs);
+      }
+
+      .section-title h2 {
+        font-size: var(--font-size-xl);
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .section-title p {
+        font-size: var(--font-size-sm);
+        line-height: 1.5;
       }
 
       .view-all-tours-card {
-        grid-column: 1 / -1 !important;
-        grid-row: auto !important;
+        width: 100%;
+        max-width: 400px;
         height: 60px;
+        margin: var(--spacing-md) auto 0;
       }
 
       .package-overlay h3 {
@@ -2168,6 +2449,54 @@
 
     /* Small Mobile */
     @media (max-width: 480px) {
+      .tour-packages-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin: var(--spacing-md) 0;
+      }
+
+      .tour-package-card {
+        height: 280px;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+      }
+
+      .package-overlay {
+        padding: var(--spacing-md);
+      }
+
+      .package-overlay h3 {
+        font-size: var(--font-size-base);
+        margin-bottom: var(--spacing-xs);
+      }
+
+      .package-duration {
+        font-size: var(--font-size-xs);
+        margin-bottom: var(--spacing-xs);
+      }
+
+      .package-link {
+        font-size: var(--font-size-xs);
+        padding: 0.375rem 0.75rem;
+      }
+
+      .featured-tag {
+        top: 0.5rem;
+        left: 0.5rem;
+        padding: 0.25rem 0.5rem;
+        font-size: var(--font-size-xs);
+      }
+
+      .view-all-tours-card {
+        width: 100%;
+        max-width: 320px;
+        height: 60px;
+        margin: var(--spacing-md) auto 0;
+      }
+
       .about-left-column {
         padding: var(--spacing-lg) var(--spacing-md);
       }
@@ -2756,14 +3085,16 @@
             <div class="hero-overlay"></div>
             <div class="hero-content">
               <h1>SIGIRIYA ROCK FORTRESS</h1>
-              <p>A UNESCO World Heritage Site, Sigiriya is an ancient rock fortress built by King Kashyapa in the 5th century.
-                Famous for its frescoes, water gardens, and lion-pawed entrance, it stands as one of Sri Lanka’s most iconic
+              <p>A UNESCO World Heritage Site, Sigiriya is an ancient rock fortress built by King Kashyapa in the 5th
+                century.
+                Famous for its frescoes, water gardens, and lion-pawed entrance, it stands as one of Sri Lanka’s most
+                iconic
                 landmarks.</p>
               <a href="topAttractions.html" class="btn-hero">Discover Sigiriya</a>
             </div>
           </div>
         </div>
-        
+
         <!-- Slide 2: Whale Watching Mirissa -->
         <div class="carousel-item">
           <div class="hero-slide"
@@ -2771,13 +3102,15 @@
             <div class="hero-overlay"></div>
             <div class="hero-content">
               <h1>MIRISSA WHALE WATCHING</h1>
-              <p>Set off into the Indian Ocean from the golden beaches of Mirissa to witness majestic blue whales, playful
-                dolphins, and other marine life. Best experienced between November and April, it's a true oceanic adventure.</p>
+              <p>Set off into the Indian Ocean from the golden beaches of Mirissa to witness majestic blue whales,
+                playful
+                dolphins, and other marine life. Best experienced between November and April, it's a true oceanic
+                adventure.</p>
               <a href="thingsToDo.html" class="btn-hero">See the Ocean Giants</a>
             </div>
           </div>
         </div>
-        
+
         <!-- Slide 3: Yala National Park -->
         <div class="carousel-item">
           <div class="hero-slide"
@@ -2785,13 +3118,15 @@
             <div class="hero-overlay"></div>
             <div class="hero-content">
               <h1>YALA NATIONAL PARK SAFARI</h1>
-              <p>Home to the highest density of leopards in the world, Yala National Park offers thrilling safari rides through
-                jungles and grasslands where you can spot elephants, crocodiles, peacocks, and many more wild species.</p>
+              <p>Home to the highest density of leopards in the world, Yala National Park offers thrilling safari rides
+                through
+                jungles and grasslands where you can spot elephants, crocodiles, peacocks, and many more wild species.
+              </p>
               <a href="topAttractions.html" class="btn-hero">Explore the Wild</a>
             </div>
           </div>
         </div>
-        
+
         <!-- Slide 4: Hill Country -->
         <div class="carousel-item">
           <div class="hero-slide"
@@ -2800,7 +3135,8 @@
             <div class="hero-content">
               <h1>NUWARA ELIYA – HILL COUNTRY CHARM</h1>
               <p>Known as ‘Little England,’ Nuwara Eliya is surrounded by lush tea plantations, misty mountains, and
-                colonial-era architecture. Enjoy scenic train rides, strawberry farms, and the beauty of Horton Plains National
+                colonial-era architecture. Enjoy scenic train rides, strawberry farms, and the beauty of Horton Plains
+                National
                 Park.</p>
               <a href="about.html" class="btn-hero">Uncover the Highlands</a>
             </div>
@@ -3400,6 +3736,71 @@
     carousel.addEventListener('mouseleave', function () {
       startProgress();
     });
+
+    // Mobile-specific enhancements
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    // Touch event handlers for swipe gestures
+    carousel.addEventListener('touchstart', function (e) {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', function (e) {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = touchStartX - touchEndX;
+
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          // Swipe left - next slide
+          const nextButton = carousel.querySelector('.carousel-control-next');
+          if (nextButton) nextButton.click();
+        } else {
+          // Swipe right - previous slide
+          const prevButton = carousel.querySelector('.carousel-control-prev');
+          if (prevButton) prevButton.click();
+        }
+      }
+    }
+
+    // Pause auto-rotation on mobile when user is interacting
+    let isUserInteracting = false;
+    let interactionTimeout;
+
+    carousel.addEventListener('touchstart', function () {
+      isUserInteracting = true;
+      clearInterval(progressInterval);
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', function () {
+      clearTimeout(interactionTimeout);
+      interactionTimeout = setTimeout(() => {
+        isUserInteracting = false;
+        if (!isUserInteracting) {
+          startProgress();
+        }
+      }, 2000);
+    }, { passive: true });
+
+    // Optimize for mobile performance
+    if ('ontouchstart' in window) {
+      // Disable hover effects on touch devices
+      const style = document.createElement('style');
+      style.textContent = `
+        @media (hover: none) {
+          .carousel-control-prev:hover,
+          .carousel-control-next:hover {
+            transform: translateY(-50%) !important;
+          }
+        }
+      `;
+      document.head.appendChild(style);
+    }
 
     // Ensure carousel fits screen properly on first load
     function initializeCarousel() {
