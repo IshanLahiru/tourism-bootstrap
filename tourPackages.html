@@ -215,74 +215,242 @@
             display: none;
         }
 
+        /* Professional Mobile Navigation */
         @media (max-width: 768px) {
             .navbar {
-                padding: 0.5rem 0;
+                padding: 0.75rem 0;
+                background: rgba(255, 255, 255, 0.98) !important;
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            }
+
+            .navbar .container {
+                padding: 0 1rem;
+            }
+
+            .navbar-brand {
+                font-size: 1.125rem;
+                font-weight: 700;
+                color: #111827 !important;
+            }
+
+            .navbar-brand i {
+                font-size: 1.25rem;
+                margin-right: 0.375rem;
+            }
+
+            .navbar-toggler {
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                width: 44px;
+                height: 44px;
+                border: 2px solid #e5e7eb;
+                border-radius: 8px;
+                background: rgba(255, 255, 255, 0.9);
+                backdrop-filter: blur(10px);
+                transition: all 0.3s ease;
+                padding: 0;
+                position: relative;
+                z-index: 1001;
+            }
+
+            .navbar-toggler:hover {
+                border-color: #F59E0B;
+                background: rgba(245, 158, 11, 0.1);
+                transform: translateY(-1px);
+                box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+            }
+
+            .navbar-toggler:focus {
+                box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+                outline: none;
+            }
+
+            .navbar-toggler[aria-expanded="true"] {
+                background: #F59E0B;
+                border-color: #F59E0B;
+            }
+
+            .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M6 6L24 24M24 6L6 24'/%3e%3c/svg%3e");
+            }
+
+            .navbar-toggler-icon {
+                width: 20px;
+                height: 20px;
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2831, 41, 55, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                transition: all 0.3s ease;
             }
 
             .navbar-collapse {
-                justify-content: flex-start;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
                 background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(10px);
-                border-top: 1px solid #e5e7eb;
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-top: 1px solid rgba(229, 231, 235, 0.8);
+                border-bottom: 1px solid rgba(229, 231, 235, 0.8);
                 margin-top: 0.5rem;
                 padding: 1rem 0;
-                border-radius: 8px;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                border-radius: 0 0 16px 16px;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+                z-index: 1000;
+                animation: slideDown 0.3s ease-out;
+            }
+
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
             }
 
             .navbar-nav {
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: stretch;
                 width: 100%;
                 gap: 0;
+                padding: 0 1rem;
             }
 
             .nav-item {
                 width: 100%;
+                margin: 0;
             }
 
             .nav-link {
-                padding: 0.75rem 1rem !important;
-                font-size: 0.875rem;
+                padding: 1rem 1.25rem !important;
+                font-size: 1rem;
+                font-weight: 500;
                 width: 100%;
-                border-bottom: 1px solid #f3f4f6;
-                transition: all 0.2s ease;
+                border-radius: 8px;
+                margin: 0.25rem 0;
+                transition: all 0.3s ease;
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                color: #374151 !important;
+                border: none;
+                background: transparent;
+            }
+
+            .nav-link::after {
+                content: '›';
+                font-size: 1.25rem;
+                color: #9ca3af;
+                transition: all 0.3s ease;
             }
 
             .nav-link:hover {
-                background: rgba(245, 158, 11, 0.1);
+                background: rgba(245, 158, 11, 0.08);
                 color: #F59E0B !important;
+                transform: translateX(4px);
+            }
+
+            .nav-link:hover::after {
+                color: #F59E0B;
+                transform: translateX(4px);
             }
 
             .nav-link.active {
-                background: rgba(245, 158, 11, 0.1);
+                background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.05) 100%);
                 color: #F59E0B !important;
                 font-weight: 600;
+                border-left: 3px solid #F59E0B;
+                border-radius: 0;
+            }
+
+            .nav-link.active::after {
+                color: #F59E0B;
             }
 
             .contact-info {
                 display: none;
             }
 
+            /* Mobile Contact Section */
+            .mobile-contact {
+                display: block;
+                padding: 1rem 1.25rem;
+                margin: 0.5rem 1rem;
+                background: linear-gradient(135deg, rgba(30, 64, 175, 0.05) 0%, rgba(30, 64, 175, 0.02) 100%);
+                border-radius: 8px;
+                border: 1px solid rgba(30, 64, 175, 0.1);
+            }
+
+            .mobile-contact .nav-contact {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                font-size: 0.875rem;
+                color: #1E40AF;
+                text-decoration: none;
+                font-weight: 500;
+            }
+
+            .mobile-contact .nav-contact i {
+                color: #1E40AF;
+                font-size: 1rem;
+            }
+
+            .mobile-contact .nav-contact a {
+                color: #1E40AF;
+                text-decoration: none;
+                font-weight: 500;
+            }
+        }
+
+        /* Small Mobile Optimization */
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 0.5rem 0;
+            }
+
             .navbar-brand {
-                font-size: 1.25rem;
+                font-size: 1rem;
+            }
+
+            .navbar-brand i {
+                font-size: 1.125rem;
+                margin-right: 0.25rem;
             }
 
             .navbar-toggler {
-                display: block;
-                border: none;
-                padding: 0.25rem 0.5rem;
-                background: transparent;
-            }
-
-            .navbar-toggler:focus {
-                box-shadow: none;
-                outline: none;
+                width: 40px;
+                height: 40px;
             }
 
             .navbar-toggler-icon {
-                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2831, 41, 55, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+                width: 18px;
+                height: 18px;
+            }
+
+            .nav-link {
+                padding: 0.875rem 1rem !important;
+                font-size: 0.9375rem;
+            }
+
+            .mobile-contact {
+                padding: 0.875rem 1rem;
+                margin: 0.25rem 1rem;
+            }
+
+            .mobile-contact .nav-contact {
+                font-size: 0.8125rem;
             }
         }
 
@@ -707,6 +875,19 @@
                         </span>
                     </li>
                     <li class="nav-item contact-info">
+                        <span class="nav-contact">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@manonlankatours.com">info@manonlankatours.com</a>
+                        </span>
+                    </li>
+                    <!-- Mobile Contact Section -->
+                    <li class="nav-item mobile-contact">
+                        <span class="nav-contact">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+94112991508">+94 112 991 508</a>
+                        </span>
+                    </li>
+                    <li class="nav-item mobile-contact">
                         <span class="nav-contact">
                             <i class="fas fa-envelope"></i>
                             <a href="mailto:info@manonlankatours.com">info@manonlankatours.com</a>
