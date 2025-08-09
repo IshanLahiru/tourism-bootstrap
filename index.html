@@ -174,7 +174,7 @@
       --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
       --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 
-      /* Sleek Design Variables */
+      /* Design system variables - keeping everything consistent */
       --font-size-xs: 0.75rem;
       --font-size-sm: 0.875rem;
       --font-size-base: 0.95rem;
@@ -215,7 +215,7 @@
       letter-spacing: -0.01em;
     }
 
-    /* Professional Navigation */
+    /* Main navigation - clean and accessible design */
     .navbar {
       background: rgba(255, 255, 255, 0.95) !important;
       backdrop-filter: blur(10px);
@@ -316,6 +316,11 @@
       align-items: flex-start;
     }
 
+    /* Hide mobile contact info on larger screens to avoid duplication */
+    .mobile-contact {
+      display: none;
+    }
+
     .nav-contact {
       display: flex;
       align-items: center;
@@ -350,7 +355,7 @@
       display: none;
     }
 
-    /* Professional Mobile Navigation */
+    /* Mobile navigation - touch-friendly and easy to use */
     @media (max-width: 768px) {
       .navbar {
         padding: 0.75rem 0;
@@ -517,7 +522,7 @@
         display: none;
       }
 
-      /* Mobile Contact Section */
+      /* Mobile contact info - styled differently for better mobile UX */
       .mobile-contact {
         display: block;
         padding: 1rem 1.25rem;
@@ -549,7 +554,7 @@
       }
     }
 
-    /* Small Mobile Optimization */
+    /* Extra small mobile devices - squeezing every pixel */
     @media (max-width: 480px) {
       .navbar {
         padding: 0.5rem 0;
@@ -589,14 +594,14 @@
       }
     }
 
-    /* Professional Hero Carousel */
+    /* Hero carousel - showcasing our best destinations */
     .hero-section {
       height: 100vh;
       width: 100vw;
       position: relative;
       overflow: hidden;
       margin-top: 80px;
-      /* Account for single-level navigation */
+      /* Account for fixed navigation bar */
     }
 
     .carousel {
@@ -631,7 +636,7 @@
       box-sizing: border-box;
     }
 
-    /* Ensure carousel images load properly */
+    /* Make sure carousel images load smoothly */
     .carousel-item img {
       width: 100%;
       height: 100%;
@@ -639,7 +644,7 @@
       object-position: center;
     }
 
-    /* Mobile Hero Optimizations */
+    /* Mobile hero adjustments - making it work on small screens */
     @media (max-width: 768px) {
 
       .hero-section,
@@ -691,7 +696,7 @@
         display: block;
       }
 
-      /* Mobile Carousel Controls - Fixed Vertical Centering */
+      /* Mobile carousel controls - keeping them centered and accessible */
       .carousel-control-prev,
       .carousel-control-next {
         position: absolute;
@@ -734,7 +739,7 @@
         transform: translateY(-50%) scale(1.1);
       }
 
-      /* Mobile Progress Bar */
+      /* Mobile progress bar - showing carousel progress */
       .carousel-progress {
         bottom: 15px;
         left: 50%;
@@ -747,7 +752,7 @@
         height: 3px;
       }
 
-      /* Mobile Carousel Indicators */
+      /* Mobile carousel indicators - easy navigation */
       .carousel-indicators {
         bottom: 15px;
         gap: 4px;
@@ -759,7 +764,7 @@
       }
     }
 
-    /* Tablet Hero Optimizations */
+    /* Tablet hero adjustments - medium screen optimizations */
     @media (min-width: 769px) and (max-width: 1024px) {
       .hero-content h1 {
         font-size: 2.25rem;
@@ -774,7 +779,7 @@
         font-size: var(--font-size-base);
       }
 
-      /* Tablet Carousel Controls - Improved */
+      /* Tablet carousel controls - better positioning */
       .carousel-control-prev,
       .carousel-control-next {
         width: 50px;
@@ -805,10 +810,10 @@
       }
     }
 
-    /* Small Mobile Optimizations */
+    /* Small mobile optimizations - every pixel counts */
     @media (max-width: 480px) {
 
-      /* Small Mobile Hero */
+      /* Small mobile hero - compact but effective */
       .hero-section {
         min-height: 450px;
       }
@@ -870,7 +875,7 @@
         height: 2px;
       }
 
-      /* Navigation adjustments for small mobile */
+      /* Navigation adjustments for small mobile - keeping it usable */
       .navbar-brand {
         font-size: 1.1rem;
       }
@@ -880,7 +885,7 @@
         font-size: 0.8rem;
       }
 
-      /* Small Mobile Grid Improvements */
+      /* Small mobile grid improvements - better layout */
       .tour-categories {
         display: grid;
         grid-template-columns: 1fr;
@@ -942,7 +947,7 @@
         padding: 0 var(--spacing-xs);
       }
 
-      /* Small Mobile Container Improvements */
+      /* Small mobile container improvements - better spacing */
       .container-fluid {
         padding-left: var(--spacing-xs);
         padding-right: var(--spacing-xs);
@@ -953,14 +958,14 @@
       }
     }
 
-    /* Landscape Mobile Optimizations */
+    /* Landscape mobile optimizations - horizontal screen adjustments */
     @media (max-width: 768px) and (orientation: landscape) {
       .hero-section {
         height: 100vh;
         min-height: 350px;
       }
 
-      /* Show images in news section for mobile landscape */
+      /* Show images in news section for mobile landscape - better visual appeal */
       .news-feed-section .featured-image {
         display: block !important;
         width: 100%;
@@ -1045,7 +1050,7 @@
         min-width: 100px;
       }
 
-      /* Landscape carousel controls */
+      /* Landscape carousel controls - adjusted positioning */
       .carousel-control-prev,
       .carousel-control-next {
         width: 40px;
@@ -1066,7 +1071,7 @@
         height: 16px;
       }
 
-      /* Landscape progress bar */
+      /* Landscape progress bar - keeping it visible */
       .carousel-progress {
         bottom: 10px;
         width: 80%;
@@ -1145,7 +1150,7 @@
       justify-content: center;
     }
 
-    /* Carousel Controls Responsive */
+    /* Carousel controls responsive - adapting to different screen sizes */
     @media (max-width: 768px) {
 
       .carousel-control-prev,
@@ -1238,7 +1243,7 @@
       overflow: hidden;
     }
 
-    /* Carousel Indicators Responsive */
+    /* Carousel indicators responsive - mobile-friendly navigation */
     @media (max-width: 768px) {
       .carousel-indicators {
         bottom: 20px;
@@ -1287,7 +1292,7 @@
       transform: scaleY(1.2);
     }
 
-    /* Carousel Progress Bar */
+    /* Carousel progress bar - showing slide progress */
     .carousel-progress {
       position: absolute;
       top: 0;
@@ -1306,7 +1311,7 @@
       box-shadow: 0 0 10px rgba(30, 64, 175, 0.5);
     }
 
-    /* Touch-friendly enhancements */
+    /* Touch-friendly enhancements - better mobile interaction */
     .carousel-control-prev,
     .carousel-control-next {
       cursor: pointer;
@@ -1314,12 +1319,12 @@
       user-select: none;
     }
 
-    /* Comprehensive Responsive Design */
+    /* Comprehensive responsive design - covering all screen sizes */
 
-    /* Large Tablets and Small Desktops */
+    /* Large tablets and small desktops - medium-large screen optimizations */
     @media (max-width: 1200px) {
 
-      /* Large Tablet Bento Grid - Centered and Responsive */
+      /* Large tablet bento grid - centered and responsive layout */
       .tour-categories {
         display: grid;
         grid-template-columns: repeat(8, 1fr);
@@ -1371,7 +1376,7 @@
         grid-row: 6 / 7;
       }
 
-      /* Large Tablet Grid Improvements */
+      /* Large tablet grid improvements - better spacing and layout */
       .about-three-column {
         display: grid;
         grid-template-columns: 1.2fr 1fr 0.8fr;
@@ -1413,7 +1418,7 @@
       }
     }
 
-    /* Tablets */
+    /* Tablets - medium screen optimizations */
     @media (max-width: 991px) {
       .hero-content h1 {
         font-size: 2rem;
@@ -1425,7 +1430,7 @@
 
 
 
-      /* Tablet Bento Grid - Improved Responsive Layout */
+      /* Tablet bento grid - improved responsive layout */
       .tour-categories {
         display: grid;
         grid-template-columns: repeat(6, 1fr);
@@ -1477,7 +1482,7 @@
         grid-row: 6 / 8;
       }
 
-      /* Tablet Grid Improvements */
+      /* Tablet grid improvements - better mobile layout */
       .about-three-column {
         display: grid;
         grid-template-columns: 1fr;
@@ -1532,7 +1537,7 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      /* Testimonials Responsive */
+      /* Testimonials responsive - adapting to different screen sizes */
       .testimonials-three-column {
         grid-template-columns: 1fr;
         min-height: auto;
@@ -1580,7 +1585,7 @@
       }
     }
 
-    /* Mobile Devices */
+    /* Mobile devices - small screen optimizations */
     @media (max-width: 768px) {
       .carousel {
         touch-action: pan-y pinch-zoom;
@@ -1592,7 +1597,7 @@
         touch-action: manipulation;
       }
 
-      /* Improve touch targets */
+      /* Improve touch targets - making buttons easier to tap */
       .btn-hero,
       .btn-cta,
       .btn-view-all-tours,
@@ -1604,13 +1609,13 @@
         justify-content: center;
       }
 
-      /* Optimize images for mobile */
+      /* Optimize images for mobile - faster loading */
       img {
         max-width: 100%;
         height: auto;
       }
 
-      /* Improve text readability */
+      /* Improve text readability - better contrast and spacing */
       .hero-content h1,
       .section-title h2,
       .package-overlay h3,
@@ -1618,7 +1623,7 @@
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
       }
 
-      /* Better spacing for mobile */
+      /* Better spacing for mobile - more breathing room */
       .section {
         padding: var(--spacing-xl) 0;
       }
@@ -1652,7 +1657,7 @@
 
 
 
-      /* Mobile Bento Grid - Centered and Responsive */
+      /* Mobile bento grid - centered and responsive layout */
       .tour-categories {
         display: grid;
         grid-template-columns: 1fr;
@@ -1723,7 +1728,7 @@
         gap: 1rem;
       }
 
-      /* News Feed Mobile Responsive - News Card Style */
+      /* News feed mobile responsive - news card style layout */
       .news-feed-section .container-fluid {
         padding: 0 var(--spacing-sm);
       }

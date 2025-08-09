@@ -12,19 +12,48 @@
 
     <style>
         :root {
-            --primary-color: #2563EB;
-            --secondary-color: #475569;
+            --primary-color: #1E40AF;
+            --primary-dark: #1E3A8A;
+            --secondary-color: #374151;
             --accent-color: #F59E0B;
-            --success-color: #10B981;
-            --warning-color: #EF4444;
-            --dark-color: #0F172A;
-            --light-color: #F8FAFC;
-            --text-color: #1E293B;
-            --text-secondary: #64748B;
-            --border-color: #E2E8F0;
+            --accent-light: #FCD34D;
+            --success-color: #059669;
+            --warning-color: #DC2626;
+            --dark-color: #111827;
+            --light-color: #F9FAFB;
+            --text-color: #1F2937;
+            --text-secondary: #6B7280;
+            --border-color: #D1D5DB;
+            --gradient-primary: linear-gradient(135deg, #1E40AF 0%, #3730A3 100%);
+            --gradient-secondary: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+            --gradient-accent: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
             --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+            /* Sleek Design Variables */
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 0.95rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.875rem;
+            --font-size-4xl: 2.25rem;
+
+            --line-height-tight: 1.25;
+            --line-height-snug: 1.375;
+            --line-height-normal: 1.5;
+            --line-height-relaxed: 1.625;
+
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 0.75rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-2xl: 3rem;
+            --spacing-3xl: 4rem;
         }
 
         * {
@@ -56,6 +85,13 @@
             font-size: 1.5rem;
             color: var(--primary-color) !important;
             letter-spacing: -0.025em;
+            margin: 0;
+            flex-shrink: 0;
+        }
+
+        .navbar-brand i {
+            color: #F59E0B;
+            margin-right: 0.5rem;
         }
 
         .nav-link {
@@ -69,14 +105,14 @@
         }
 
         .nav-link:hover {
-            color: var(--primary-color) !important;
+            color: var(--accent-color) !important;
             background: transparent;
         }
 
         .nav-link.active {
-            color: var(--primary-color) !important;
+            color: var(--accent-color) !important;
             background: transparent;
-            border-bottom: 2px solid var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
         }
 
         .hero {
@@ -126,6 +162,40 @@
             padding: 5rem 0;
         }
 
+        /* Section Title Styling */
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .section-title h2 {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: var(--spacing-md);
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            font-size: var(--font-size-lg);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: var(--line-height-relaxed);
+        }
+
         .attraction-details {
             background: white;
             border-radius: 0;
@@ -153,7 +223,7 @@
         }
 
         .attraction-location {
-            color: var(--primary-color);
+            color: var(--accent-color);
             font-weight: 600;
             font-size: 1.1rem;
             margin-bottom: 2rem;
@@ -181,7 +251,7 @@
         }
 
         .info-item h4 {
-            color: var(--primary-color);
+            color: var(--accent-color);
             font-weight: 600;
             margin-bottom: 0.5rem;
         }
@@ -192,7 +262,7 @@
         }
 
         .back-btn {
-            background: var(--primary-color);
+            background: var(--gradient-accent);
             color: white;
             padding: 0.75rem 1.5rem;
             border: none;
@@ -202,15 +272,59 @@
             align-items: center;
             gap: 0.5rem;
             font-weight: 600;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             margin-bottom: 2rem;
         }
 
         .back-btn:hover {
-            background: #1D4ED8;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
             color: white;
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-md);
+        }
+
+        /* Attraction Actions */
+        .attraction-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-book {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 0.875rem 1.75rem;
+            border: none;
+            border-radius: 0;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-book:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            color: white;
+        }
+
+        .btn-contact {
+            background: transparent;
+            color: var(--text-color);
+            padding: 0.875rem 1.75rem;
+            border: 2px solid var(--text-color);
+            border-radius: 0;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-contact:hover {
+            background: var(--text-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
         }
 
         .loading {
@@ -262,6 +376,422 @@
 
             .attraction-info {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 3rem 0 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer h5 {
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+            color: white;
+            font-size: var(--font-size-lg);
+        }
+
+        .footer p,
+        .footer a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-color);
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.2s ease;
+        }
+
+        .social-links a:hover {
+            background: #D97706;
+            transform: translateY(-2px);
+        }
+
+        .footer .input-group {
+            margin-top: 1rem;
+        }
+
+        .footer .form-control {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 0;
+        }
+
+        .footer .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer .form-control:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--accent-color);
+            box-shadow: none;
+        }
+
+        .footer .btn-primary {
+            background: var(--accent-color);
+            border: none;
+            border-radius: 0;
+            padding: 0.5rem 1rem;
+        }
+
+        .footer .btn-primary:hover {
+            background: #D97706;
+            transform: translateY(-1px);
+        }
+
+        /* Footer Responsive */
+        @media (max-width: 768px) {
+            .footer {
+                padding: 2rem 0 1rem;
+            }
+
+            .footer h5 {
+                font-size: var(--font-size-lg);
+                margin-bottom: 1rem;
+            }
+
+            .footer p,
+            .footer a {
+                font-size: var(--font-size-sm);
+            }
+
+            .social-links {
+                justify-content: center;
+                margin-top: 1.5rem;
+            }
+
+            .social-links a {
+                width: 35px;
+                height: 35px;
+                font-size: 0.875rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer {
+                padding: 1.5rem 0 1rem;
+            }
+
+            .footer h5 {
+                font-size: var(--font-size-base);
+                margin-bottom: 0.75rem;
+            }
+
+            .footer p,
+            .footer a {
+                font-size: var(--font-size-xs);
+            }
+
+            .social-links {
+                gap: 0.75rem;
+            }
+
+            .social-links a {
+                width: 32px;
+                height: 32px;
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                z-index: 1000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .navbar-collapse.show {
+                transform: translateX(0);
+            }
+
+            .navbar-nav {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+                padding: 2rem;
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .nav-link {
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 0;
+                padding: 1rem 1.5rem !important;
+                margin: 0 !important;
+                color: white !important;
+                font-weight: 500;
+                text-align: center;
+                position: relative;
+                overflow: hidden;
+                transition: all 0.3s ease;
+            }
+
+            .nav-link::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+                transition: left 0.5s ease;
+            }
+
+            .nav-link:hover::before {
+                left: 100%;
+            }
+
+            .nav-link:hover {
+                background: rgba(255, 255, 255, 0.15) !important;
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            }
+
+            .nav-link.active {
+                background: var(--gradient-accent) !important;
+                color: white !important;
+                border-color: transparent;
+                border-radius: 0;
+            }
+
+            .navbar-toggler {
+                border: none;
+                padding: 0.5rem;
+                background: transparent;
+                position: relative;
+                z-index: 1001;
+            }
+
+            .navbar-toggler:focus {
+                box-shadow: none;
+            }
+
+            .navbar-toggler-icon {
+                background-image: none;
+                position: relative;
+                width: 24px;
+                height: 2px;
+                background: var(--text-color);
+                transition: all 0.3s ease;
+            }
+
+            .navbar-toggler-icon::before,
+            .navbar-toggler-icon::after {
+                content: '';
+                position: absolute;
+                width: 24px;
+                height: 2px;
+                background: var(--text-color);
+                transition: all 0.3s ease;
+            }
+
+            .navbar-toggler-icon::before {
+                top: -8px;
+            }
+
+            .navbar-toggler-icon::after {
+                bottom: -8px;
+            }
+
+            .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+                background: transparent;
+            }
+
+            .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+                transform: rotate(45deg);
+                top: 0;
+            }
+
+            .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+                transform: rotate(-45deg);
+                bottom: 0;
+            }
+
+            .contact-info {
+                margin-top: 2rem;
+                padding: 1.5rem;
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 0;
+            }
+
+            .nav-contact {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                color: rgba(255, 255, 255, 0.8);
+                margin-bottom: 1rem;
+                font-size: 0.875rem;
+            }
+
+            .nav-contact i {
+                color: var(--accent-color);
+                font-size: 1rem;
+            }
+
+            .nav-contact a {
+                color: rgba(255, 255, 255, 0.8);
+                text-decoration: none;
+                transition: color 0.2s ease;
+            }
+
+            .nav-contact a:hover {
+                color: var(--accent-color);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 56px;
+            height: 56px;
+            background: var(--gradient-accent);
+            color: white;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .scroll-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* Scroll to top button responsive */
+        @media (max-width: 768px) {
+            .scroll-top {
+                bottom: 20px;
+                right: 20px;
+                width: 48px;
+                height: 48px;
+                font-size: 0.875rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .scroll-top {
+                bottom: 15px;
+                right: 15px;
+                width: 44px;
+                height: 44px;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Attraction Details Responsive */
+        @media (max-width: 768px) {
+            .attraction-title {
+                font-size: 2rem;
+            }
+
+            .attraction-content {
+                padding: 2rem;
+            }
+
+            .attraction-info {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .info-item {
+                padding: 1.25rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .attraction-title {
+                font-size: 1.75rem;
+            }
+
+            .attraction-content {
+                padding: 1.5rem;
+            }
+
+            .attraction-image {
+                height: 300px;
+            }
+
+            .back-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+            }
+
+            .attraction-actions {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .btn-book,
+            .btn-contact {
+                text-align: center;
+                padding: 0.75rem 1.5rem;
             }
         }
     </style>
@@ -329,7 +859,12 @@
                     Back to Attractions
                 </a>
 
-                <div class="attraction-details" data-aos="fade-up">
+                <div class="section-title" data-aos="fade-up">
+                    <h2>Attraction Details</h2>
+                    <p>Discover the beauty and history of this amazing destination</p>
+                </div>
+
+                <div class="attraction-details" data-aos="fade-up" data-aos-delay="200">
                     <img id="attraction-image" class="attraction-image" src="" alt="">
                     <div class="attraction-content">
                         <h1 id="attraction-title" class="attraction-title">Attraction Name</h1>
@@ -354,11 +889,69 @@
                                 <p id="info-hours">Loading...</p>
                             </div>
                         </div>
+
+                        <div class="attraction-actions">
+                            <a href="contact.html" class="btn-book">Book This Tour</a>
+                            <a href="contact.html" class="btn-contact">Contact Us</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5>Manon Lanka Tours</h5>
+                    <p>Your trusted partner for unforgettable Sri Lankan adventures. We specialize in creating
+                        personalized travel experiences that showcase the beauty, culture, and excitement of paradise
+                        island.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="tourPackages.html">Tour Packages</a></li>
+                        <li><a href="thingsToDo.html">Things to Do</a></li>
+                        <li><a href="topAttractions.html">Attractions</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> 123 Travel Street, Colombo, Sri Lanka</p>
+                    <p><i class="fas fa-phone me-2"></i> +94 112 991 508</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@manonlankatours.com</p>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5>Newsletter</h5>
+                    <p>Subscribe to our newsletter for travel tips and special offers.</p>
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Your email">
+                        <button class="btn btn-primary" type="button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2024 Manon Lanka Tours. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <a href="#top" class="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -483,6 +1076,25 @@
         }
 
         window.addEventListener('load', loadAttractionDetails);
+
+        // Scroll to top button
+        const scrollTopBtn = document.querySelector('.scroll-top');
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+
+        // Newsletter subscription
+        document.querySelector('.btn-primary').addEventListener('click', function () {
+            const email = document.querySelector('input[type="email"]').value;
+            if (email) {
+                alert('Thank you for subscribing to our newsletter!');
+                document.querySelector('input[type="email"]').value = '';
+            }
+        });
     </script>
 </body>
 

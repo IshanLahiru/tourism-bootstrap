@@ -181,6 +181,11 @@
             align-items: flex-start;
         }
 
+        /* Hide mobile contact on desktop */
+        .mobile-contact {
+            display: none;
+        }
+
         .nav-contact {
             display: flex;
             align-items: center;
@@ -498,6 +503,19 @@
             font-weight: 700;
             color: var(--text-color);
             margin-bottom: var(--spacing-md);
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-accent);
+            border-radius: 2px;
         }
 
         .section-title p {
@@ -569,7 +587,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.1), transparent);
             transition: left 0.5s ease;
         }
 
@@ -617,34 +635,32 @@
         }
 
         .package-features li i {
-            color: var(--primary-color);
+            color: var(--accent-color);
             margin-right: 0.5rem;
         }
 
         .package-price {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--primary-color);
+            color: var(--accent-color);
             margin-bottom: 1rem;
         }
 
         .btn-book {
-            background: var(--primary-color);
+            background: var(--gradient-accent);
             color: white;
             padding: 0.75rem 1.5rem;
             border: none;
             border-radius: 0;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             display: inline-block;
         }
 
         .btn-book:hover {
-            background: #1D4ED8;
-            color: white;
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
         }
 
         /* Package Categories */
@@ -657,20 +673,22 @@
 
         .category-tab {
             background: white;
-            border: 1px solid var(--primary-color);
-            color: var(--primary-color);
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
             padding: 0.75rem 1.5rem;
             margin: 0.25rem;
             border-radius: 0;
             text-decoration: none;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             font-weight: 600;
         }
 
         .category-tab:hover,
         .category-tab.active {
-            background: var(--primary-color);
+            background: var(--gradient-accent);
             color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
 
         /* Footer */
@@ -707,7 +725,7 @@
         .social-links a {
             width: 40px;
             height: 40px;
-            background: var(--primary-color);
+            background: var(--accent-color);
             border-radius: 0;
             display: flex;
             align-items: center;
@@ -717,8 +735,8 @@
         }
 
         .social-links a:hover {
-            background: var(--accent-color);
-            transform: translateY(-1px);
+            background: #D97706;
+            transform: translateY(-2px);
         }
 
         /* Newsletter styling */
@@ -739,25 +757,20 @@
 
         .footer .form-control:focus {
             background: rgba(255, 255, 255, 0.15);
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
-            color: white;
+            border-color: var(--accent-color);
+            box-shadow: none;
         }
 
         .footer .btn-primary {
-            background: var(--primary-color);
-            border: 1px solid var(--primary-color);
+            background: var(--accent-color);
+            border: none;
             border-radius: 0;
-            padding: 0.75rem 1.5rem;
-            font-weight: 600;
-            transition: all 0.2s ease;
+            padding: 0.5rem 1rem;
         }
 
         .footer .btn-primary:hover {
-            background: #1D4ED8;
-            border-color: #1D4ED8;
+            background: #D97706;
             transform: translateY(-1px);
-            box-shadow: var(--shadow-md);
         }
 
         /* Responsive Design */
@@ -808,11 +821,11 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 48px;
-            height: 48px;
-            background: var(--primary-color);
+            width: 56px;
+            height: 56px;
+            background: var(--gradient-accent);
             color: white;
-            border-radius: 50%;
+            border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -821,6 +834,7 @@
             visibility: hidden;
             transition: all 0.3s ease;
             z-index: 1000;
+            box-shadow: var(--shadow-lg);
         }
 
         .scroll-top.show {
@@ -829,8 +843,83 @@
         }
 
         .scroll-top:hover {
-            background: var(--accent-color);
             transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* Scroll to top button responsive */
+        @media (max-width: 768px) {
+            .scroll-top {
+                bottom: 20px;
+                right: 20px;
+                width: 48px;
+                height: 48px;
+                font-size: 0.875rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .scroll-top {
+                bottom: 15px;
+                right: 15px;
+                width: 44px;
+                height: 44px;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Footer Responsive */
+        @media (max-width: 768px) {
+            .footer {
+                padding: 2rem 0 1rem;
+            }
+
+            .footer h5 {
+                font-size: var(--font-size-lg);
+                margin-bottom: 1rem;
+            }
+
+            .footer p,
+            .footer a {
+                font-size: var(--font-size-sm);
+            }
+
+            .social-links {
+                justify-content: center;
+                margin-top: 1.5rem;
+            }
+
+            .social-links a {
+                width: 35px;
+                height: 35px;
+                font-size: 0.875rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer {
+                padding: 1.5rem 0 1rem;
+            }
+
+            .footer h5 {
+                font-size: var(--font-size-base);
+                margin-bottom: 0.75rem;
+            }
+
+            .footer p,
+            .footer a {
+                font-size: var(--font-size-xs);
+            }
+
+            .social-links {
+                gap: 0.75rem;
+            }
+
+            .social-links a {
+                width: 32px;
+                height: 32px;
+                font-size: 0.75rem;
+            }
         }
     </style>
 </head>
@@ -1075,7 +1164,7 @@
                 <div class="col-lg-3 col-md-6 mb-4">
                     <h5>Contact Info</h5>
                     <p><i class="fas fa-map-marker-alt me-2"></i> 123 Travel Street, Colombo, Sri Lanka</p>
-                    <p><i class="fas fa-phone me-2"></i> +94 11 234 5678</p>
+                    <p><i class="fas fa-phone me-2"></i> +94 112 991 508</p>
                     <p><i class="fas fa-envelope me-2"></i> info@manonlankatours.com</p>
                 </div>
                 <div class="col-lg-3 mb-4">
