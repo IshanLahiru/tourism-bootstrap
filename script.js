@@ -173,40 +173,85 @@ function initTestimonialCarousel() {
 
 // Package filtering
 function initPackageFiltering() {
-    const categoryTabs = document.querySelectorAll('.category-tab');
+    const categoryTabs = document.querySelectorAll('.packagespage_category-tab');
+    const packages = document.querySelectorAll('.packagespage_package-item');
+    
+    console.log('Found category tabs:', categoryTabs.length); // Debug log
+    console.log('Found packages:', packages.length); // Debug log
+    
+    // Initialize all packages as visible
+    packages.forEach(package => {
+        package.classList.add('show');
+        package.style.display = 'block';
+    });
     
     categoryTabs.forEach(tab => {
         tab.addEventListener('click', function (e) {
             e.preventDefault();
-            document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+            console.log('Tab clicked:', this.textContent); // Debug log
+            
+            document.querySelectorAll('.packagespage_category-tab').forEach(t => t.classList.remove('active'));
             this.classList.add('active');
             filterPackages(this.textContent.toLowerCase());
         });
     });
 }
 
-function filterPackages(category) {
-    const packages = document.querySelectorAll('.package-item');
+// Make filterPackages globally accessible for testing
+window.filterPackages = function(category) {
+    const packages = document.querySelectorAll('.packagespage_package-item');
     const container = document.getElementById('packages-container');
     
+    console.log('Found packages:', packages.length); // Debug log
+    console.log('Found container:', container); // Debug log
+    
     if (!container) return;
+    
+    // Category mapping
+    const categoryMap = {
+        'all packages': 'all',
+        'cultural tours': 'cultural',
+        'wildlife': 'wildlife',
+        'beach': 'beach',
+        'honeymoon': 'honeymoon'
+    };
+    
+    const selectedCategory = categoryMap[category] || category;
+    
+    // Debug: Log all package categories
+    packages.forEach(package => {
+        const packageCategory = package.getAttribute('data-category');
+        const packageTitle = package.querySelector('h3')?.textContent || 'Unknown';
+        console.log(`Package: ${packageTitle}, Category: ${packageCategory}`);
+    });
+    
+    console.log('Filtering for category:', category, '->', selectedCategory); // Debug log
     
     container.style.opacity = '0.7';
     container.style.transform = 'scale(0.98)';
     
     setTimeout(() => {
+        let visibleCount = 0;
+        
         packages.forEach(package => {
             const packageCategory = package.getAttribute('data-category');
+            console.log('Package category:', packageCategory); // Debug log
+            
             package.classList.remove('show', 'hidden');
             
-            if (category === 'all packages' || packageCategory === category) {
+            if (selectedCategory === 'all' || packageCategory === selectedCategory) {
                 package.classList.add('show');
                 package.style.display = 'block';
+                visibleCount++;
+                console.log('Showing package:', package.querySelector('h3').textContent); // Debug log
             } else {
                 package.classList.add('hidden');
-                setTimeout(() => package.style.display = 'none', 300);
+                package.style.display = 'none';
+                console.log('Hiding package:', package.querySelector('h3').textContent); // Debug log
             }
         });
+        
+        console.log('Total visible packages:', visibleCount); // Debug log
         
         container.style.opacity = '1';
         container.style.transform = 'scale(1)';
@@ -220,7 +265,7 @@ const attractionsData = {
     'temple-of-the-tooth': {
         name: 'Temple of the Tooth',
         location: 'Kandy, Sri Lanka',
-        image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+        image: 'img/toothrlic.jpg',
         description: 'The Temple of the Sacred Tooth Relic, commonly known as the Temple of the Tooth, is a Buddhist temple in Kandy, Sri Lanka. It is located in the royal palace complex of the former Kingdom of Kandy, which houses the relic of the tooth of the Buddha. Since ancient times, the relic has played an important role in local politics because it is believed that whoever holds the relic holds the governance of the country. The temple is a UNESCO World Heritage site and is one of the most sacred places of worship in the Buddhist world.',
         info: {
             location: 'Kandy, Central Province',
@@ -232,7 +277,7 @@ const attractionsData = {
     'galle-fort': {
         name: 'Galle Fort',
         location: 'Galle, Sri Lanka',
-        image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+        image: 'img/mirissa.jpg',
         description: 'Galle Fort, in the Bay of Galle on the southwest coast of Sri Lanka, was built first in 1588 by the Portuguese, then extensively fortified by the Dutch during the 17th century from 1649 onwards. It is a historical, archaeological and architectural heritage monument, which even after more than 432 years maintains a polished appearance, due to extensive reconstruction work done by Archaeological Department of Sri Lanka. The fort has a colorful history, and today has a multi-ethnic and multi-religious population.',
         info: {
             location: 'Galle, Southern Province',
@@ -244,7 +289,7 @@ const attractionsData = {
     'ella-rock': {
         name: 'Ella Rock',
         location: 'Ella, Sri Lanka',
-        image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+        image: 'img/train2.jpg',
         description: 'Ella Rock is a popular hiking destination in the Badulla District of Sri Lanka. It is situated at an elevation of 1,041 meters above sea level and offers panoramic views of the surrounding countryside, including the Ella Gap, Little Adam\'s Peak, and the Ella railway station. The hike to Ella Rock takes approximately 2-3 hours and passes through tea plantations, forests, and rural villages. The trail is moderately challenging and offers a great opportunity to experience the natural beauty of Sri Lanka\'s hill country.',
         info: {
             location: 'Ella, Uva Province',
@@ -256,7 +301,7 @@ const attractionsData = {
     'yala-national-park': {
         name: 'Yala National Park',
         location: 'Yala, Sri Lanka',
-        image: 'https://images.unsplash.com/photo-1549366021-9f761d450615?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+        image: 'img/yala.jpg',
         description: "Yala National Park is the most visited and second largest national park in Sri Lanka, bordering the Indian Ocean. The park consists of five blocks, two of which are now open to the public, and also adjoining parks. The blocks have individual names such as Ruhuna National Park (Block 1) and Kumana National Park or 'Yala East' for the adjoining area. It is situated in the southeast region of the country, and lies in Southern Province and Uva Province. The park is best known for its variety of wild animals. It is important for the conservation of Sri Lankan elephants, Sri Lankan leopards and aquatic birds.",
         info: {
             location: 'Yala, Southern Province',
@@ -268,7 +313,7 @@ const attractionsData = {
     'anuradhapura': {
         name: 'Anuradhapura',
         location: 'Anuradhapura, Sri Lanka',
-        image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+        image: 'img/galviharaya.jpg',
         description: 'Anuradhapura is a major city in Sri Lanka. It is the capital city of North Central Province, Sri Lanka and the capital of Anuradhapura District. Anuradhapura is one of the ancient capitals of Sri Lanka, famous for its well-preserved ruins of an ancient Sinhalese civilization. It was the third capital of the kingdom of Rajarata, following the kingdoms of Tambapanni and Upatissa Nuwara. The city, now a UNESCO World Heritage site, was the center of Theravada Buddhism for many centuries.',
         info: {
             location: 'Anuradhapura, North Central Province',
@@ -280,7 +325,7 @@ const attractionsData = {
     'mirissa-beach': {
         name: 'Mirissa Beach',
         location: 'Mirissa, Sri Lanka',
-        image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+        image: 'img/Fishermen_in_Sri_Lanka.jpg',
         description: 'Mirissa is a small town on the south coast of Sri Lanka, located in the Matara District of the Southern Province. It is approximately 150 kilometers south of Colombo and is situated at an elevation of 4 meters above sea level. Mirissa is the largest fishing port on the south coast and is known for its tuna, mullet, snapper and butterfish. In 1980 the first tourist accommodation was built, however it wasn\'t until the mid-1990s that tourism to the town started to dramatically increase. Today Mirissa is one of the main beach destinations on the south coast of the island.',
         info: {
             location: 'Mirissa, Southern Province',
