@@ -2845,6 +2845,25 @@
       transform: scale(1.05);
     }
 
+    .about-hero-video {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-hero-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.4s ease;
+    }
+
+    .about-hero-video:hover video {
+      transform: scale(1.05);
+    }
+
     /* Right Column - Benefits */
     .about-right-column {
       background: #f8f9fa;
@@ -3212,6 +3231,81 @@
 
     .testimonial-hero-image:hover img {
       transform: scale(1.05);
+    }
+
+    .testimonial-hero-video {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-hero-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.4s ease;
+    }
+
+    .testimonial-hero-video:hover video {
+      transform: scale(1.05);
+    }
+
+    .testimonial-video-carousel {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .video-slide.active {
+      opacity: 1;
+    }
+
+    .video-slide video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .video-dots {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
+
+    .video-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .video-dot.active {
+      background: #1E40AF;
+      transform: scale(1.2);
+    }
+
+    .video-dot:hover {
+      background: rgba(255, 255, 255, 0.8);
     }
 
     .testimonial-card {
@@ -4647,7 +4741,7 @@
     .news-feed-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto auto auto;
+      grid-template-rows: 1fr auto auto;
       gap: 2rem;
       margin-top: 3rem;
       width: 100%;
@@ -4794,7 +4888,7 @@
       grid-column: 1;
       grid-row: 1 / 4;
       background: white;
-      overflow: hidden;
+      overflow: visible;
       transition: all 0.3s ease;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -4803,6 +4897,7 @@
       position: relative;
       width: 100%;
       max-width: 100%;
+      min-height: auto;
     }
 
     /* Desktop-specific featured article styles */
@@ -4858,11 +4953,12 @@
 
 
     .news-feed-grid .featured-content {
-      padding: var(--spacing-xl);
+      padding: var(--spacing-2xl);
       flex: 1;
       display: flex;
       flex-direction: column;
       background: white;
+      min-height: auto;
     }
 
     .article-meta {
@@ -4895,8 +4991,8 @@
       font-size: var(--font-size-base);
       line-height: var(--line-height-relaxed);
       color: #6b7280;
-      margin-bottom: 0;
-      flex: 1;
+      margin-bottom: var(--spacing-md);
+      flex: 0;
     }
 
 
@@ -5278,7 +5374,7 @@
 
       .news-feed-grid .article-background {
         width: 180px;
-        height: 180px;
+        height: 100%;
       }
 
       .news-feed-grid .article-content {
@@ -6365,6 +6461,25 @@
     }
 
     .about-hero-image:hover img {
+      transform: scale(1.05);
+    }
+
+    .about-hero-video {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-hero-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.4s ease;
+    }
+
+    .about-hero-video:hover video {
       transform: scale(1.05);
     }
 

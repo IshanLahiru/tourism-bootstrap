@@ -410,6 +410,227 @@ function initGalleryEffects() {
     });
 }
 
+// Global video manager - ensures only one video plays at a time across the entire page
+let globalVideoManager = {
+    currentPlayingVideo: null,
+    
+    pauseAllVideos: function() {
+        const allVideos = document.querySelectorAll('video');
+        allVideos.forEach(video => {
+            if (video !== this.currentPlayingVideo) {
+                video.pause();
+                video.muted = true;
+            }
+        });
+    },
+    
+    setCurrentVideo: function(video) {
+        this.currentPlayingVideo = video;
+        this.pauseAllVideos();
+    }
+};
+
+// Helper function to check if element is in viewport
+function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
+// Scroll-based video player
+function initScrollVideoPlayer() {
+    const videoContainers = document.querySelectorAll('.about-hero-video, .testimonial-video-carousel');
+    
+    const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const container = entry.target;
+            const videos = container.querySelectorAll('video');
+            
+            if (entry.isIntersecting) {
+                // Video container is in view
+                if (container.classList.contains('testimonial-video-carousel')) {
+                    // For carousel, ensure first video is playing
+                    const activeSlide = container.querySelector('.video-slide.active');
+                    if (activeSlide) {
+                        const video = activeSlide.querySelector('video');
+                        if (video && video.paused) {
+                            globalVideoManager.setCurrentVideo(video);
+                            video.muted = false;
+                            video.play().catch(e => {
+                                console.log('Autoplay prevented:', e);
+                            });
+                        }
+                    }
+                } else {
+                    // For single video, play it if not already playing
+                    if (videos.length > 0) {
+                        const video = videos[0];
+                        if (video.paused) {
+                            globalVideoManager.setCurrentVideo(video);
+                            video.muted = false;
+                            video.play().catch(e => {
+                                console.log('Autoplay prevented:', e);
+                            });
+                        }
+                    }
+                }
+            } else {
+                // Video container is out of view - pause all videos in this container
+                videos.forEach(video => {
+                    video.pause();
+                    video.muted = true;
+                });
+            }
+        });
+    }, {
+        threshold: 0.5, // Trigger when 50% of the video container is visible
+        rootMargin: '0px 0px -100px 0px' // Trigger slightly before the video comes into view
+    });
+    
+    // Observe all video containers
+    videoContainers.forEach(container => {
+        videoObserver.observe(container);
+    });
+}
+
+// Video carousel functionality
+function initVideoCarousel() {
+    const videoSlides = document.querySelectorAll('.video-slide');
+    const videoDots = document.querySelectorAll('.video-dot');
+    let currentSlide = 0;
+    let slideInterval;
+
+    function showSlide(index) {
+        // Hide all slides and mute/pause all videos
+        videoSlides.forEach(slide => {
+            slide.classList.remove('active');
+            const video = slide.querySelector('video');
+            if (video) {
+                video.pause();
+                video.muted = true;
+                video.currentTime = 0;
+            }
+        });
+
+        // Remove active class from all dots
+        videoDots.forEach(dot => dot.classList.remove('active'));
+
+        // Show current slide and unmute/play the video
+        if (videoSlides[index]) {
+            videoSlides[index].classList.add('active');
+            const video = videoSlides[index].querySelector('video');
+            if (video) {
+                globalVideoManager.setCurrentVideo(video);
+                video.muted = false;
+                video.currentTime = 0;
+                video.play();
+            }
+        }
+
+        // Activate current dot
+        if (videoDots[index]) {
+            videoDots[index].classList.add('active');
+        }
+
+        currentSlide = index;
+    }
+
+    function nextSlide() {
+        const nextIndex = (currentSlide + 1) % videoSlides.length;
+        showSlide(nextIndex);
+    }
+
+    function startAutoPlay() {
+        // Don't use interval - let videos play to completion
+        // The video 'ended' event will trigger the next slide
+    }
+
+    function stopAutoPlay() {
+        if (slideInterval) {
+            clearInterval(slideInterval);
+        }
+    }
+
+    // Expose functions globally for scroll observer
+    window.videoCarouselAutoPlay = startAutoPlay;
+    window.videoCarouselStopAutoPlay = stopAutoPlay;
+
+    // Initialize
+    if (videoSlides.length > 0) {
+        // Mute all videos initially
+        videoSlides.forEach(slide => {
+            const video = slide.querySelector('video');
+            if (video) {
+                video.muted = true;
+            }
+        });
+        
+        showSlide(0);
+        // Don't start auto-play immediately - let scroll observer handle it
+        // startAutoPlay();
+
+        // Dot click events
+        videoDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                stopAutoPlay();
+                showSlide(index);
+                // Only start auto-play if the carousel is visible
+                const carousel = document.querySelector('.testimonial-video-carousel');
+                if (carousel && isElementInViewport(carousel)) {
+                    startAutoPlay();
+                }
+            });
+        });
+
+        // Handle video events
+        videoSlides.forEach(slide => {
+            const video = slide.querySelector('video');
+            if (video) {
+                video.addEventListener('play', () => {
+                    globalVideoManager.setCurrentVideo(video);
+                });
+                
+                video.addEventListener('ended', () => {
+                    // Wait 2 seconds after video ends, then go to next slide
+                    setTimeout(() => {
+                        // Only advance if carousel is still visible
+                        const carousel = document.querySelector('.testimonial-video-carousel');
+                        if (carousel && isElementInViewport(carousel)) {
+                            nextSlide();
+                        }
+                    }, 2000);
+                });
+                
+                // Remove loop attribute to allow natural ending
+                video.removeAttribute('loop');
+            }
+        });
+    }
+}
+
+// Handle About section video
+function initAboutVideo() {
+    const aboutVideo = document.querySelector('.about-hero-video video');
+    if (aboutVideo) {
+        // Start muted to prevent auto-play issues
+        aboutVideo.muted = true;
+        
+        // When user interacts with the video, make it the current playing video
+        aboutVideo.addEventListener('play', () => {
+            globalVideoManager.setCurrentVideo(aboutVideo);
+        });
+        
+        // When video starts playing, unmute it
+        aboutVideo.addEventListener('playing', () => {
+            aboutVideo.muted = false;
+        });
+    }
+}
+
 // Initialize everything
 function initWebsite() {
     initAOS();
@@ -421,6 +642,9 @@ function initWebsite() {
     initNavbarScroll();
     initCarousel();
     initTestimonialCarousel();
+    initAboutVideo();
+    initVideoCarousel();
+    initScrollVideoPlayer();
     initPackageFiltering();
     initGalleryEffects();
     
