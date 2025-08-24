@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5-Day Enchanted Forest Discovery - Manon Lanka Tours</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.jpg" alt="Manon Lanka Tours" style="height: 40px; width: auto; margin-right: 10px;">
+                Manon Lanka Tours
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="tourPackages.html">Packages</a></li>
+                    <li class="nav-item"><a class="nav-link" href="thingsToDo.html">Things to Do</a></li>
+                    <li class="nav-item"><a class="nav-link" href="topAttractions.html">Attractions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item contact-info">
+                        <span class="nav-contact">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+94112991508">+94 112 991 508</a>
+                        </span>
+                    </li>
+                    <li class="nav-item contact-info">
+                        <span class="nav-contact">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@manonlankatours.com">info@manonlankatours.com</a>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="package-details-hero"
+            style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/sigiriya/1.jpg'); background-size: cover; background-position: center;">
+            <div class="container">
+                <div class="package-details-hero-content" data-aos="fade-up" data-aos-duration="1000">
+
+                    <h1>5-Day Enchanted Forest Discovery</h1>
+                    <p class="hero-subtitle">Experience breathtaking landscapes, rich cultures, and unforgettable
+                        moments with our expertly crafted tour package.</p>
+                    <div class="hero-actions">
+                        <a href="contact.html" class="btn btn-primary btn-lg">
+                            <i class="fas fa-arrow-right me-2"></i>Book This Tour
+                        </a>
+                        <a href="#faq" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-envelope me-2"></i>Contact Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tour Package Overview -->
+        <section class="section package-overview">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="package-main-content" data-aos="fade-up">
+                            <h2>Tour Package Overview</h2>
+                            <p class="lead">Discover the mystical beauty of Sri Lanka's ancient forests and cultural
+                                heritage sites. This 5-day adventure takes you through the heart of the island's most
+                                enchanting landscapes, from dense rainforests to ancient temples.</p>
+
+                            <div class="package-highlights">
+                                <h3>Package Highlights</h3>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <ul class="highlights-list">
+                                            <li><i class="fas fa-check-circle text-success"></i> Guided forest
+                                                exploration</li>
+                                            <li><i class="fas fa-check-circle text-success"></i> Ancient temple visits
+                                            </li>
+                                            <li><i class="fas fa-check-circle text-success"></i> Wildlife spotting
+                                                opportunities</li>
+                                            <li><i class="fas fa-check-circle text-success"></i> Cultural immersion
+                                                experiences</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ul class="package-features">
+                                            <li><i class="fas fa-check"></i> Professional English guide</li>
+                                            <li><i class="fas fa-check"></i> Comfortable accommodation</li>
+                                            <li><i class="fas fa-check"></i> All meals included</li>
+                                            <li><i class="fas fa-check"></i> Transportation provided</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="package-sidebar" data-aos="fade-left">
+                            <div class="package-card">
+                                <div class="package-header">
+                                    <h3>Package Details</h3>
+                                    <div class="price-tag">
+                                        <span class="current-price" id="package-current-price">$899</span>
+                                        <span class="original-price" id="package-original-price">$1,100</span>
+                                        <span class="per-person">per person</span>
+                                    </div>
+                                </div>
+                                <div class="package-info">
+                                    <div class="info-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span id="package-duration">5 Days / 4 Nights</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>Max 12 people</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span id="package-category">Cultural Tours</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fas fa-utensils"></i>
+                                        <span>Meals & Stay Included</span>
+                                    </div>
+                                </div>
+                                <a href="contact.html" class="btn btn-primary btn-book-now">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Journey Highlights -->
+        <section class="section journey-highlights">
+            <div class="container">
+                <div class="section-title" data-aos="fade-up">
+                    <h2>Journey Highlights</h2>
+                    <p>Discover the extraordinary experiences that await you on this magical forest adventure.</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="packagespage_package-card highlight-card">
+                            <img src="img/sigiriya/1.jpg" alt="Forest Exploration">
+                            <div class="card-body">
+                                <h3>Forest Exploration</h3>
+                                <p>Immerse yourself in the mystical Sinharaja rainforest, a UNESCO World Heritage site
+                                    with ancient trees and diverse wildlife.</p>
+                                <ul class="packagespage_package-features">
+                                    <li><i class="fas fa-check"></i> Guided forest treks</li>
+                                    <li><i class="fas fa-check"></i> Wildlife spotting</li>
+                                    <li><i class="fas fa-check"></i> Bird watching</li>
+                                    <li><i class="fas fa-check"></i> Plant identification</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="packagespage_package-card highlight-card">
+                            <img src="img/sigiriya/2.jpg" alt="Cultural Heritage">
+                            <div class="card-body">
+                                <h3>Cultural Heritage</h3>
+                                <p>Experience the rich cultural heritage of Sri Lanka through ancient temples,
+                                    traditional ceremonies, and local customs.</p>
+                                <ul class="packagespage_package-features">
+                                    <li><i class="fas fa-check"></i> Temple visits</li>
+                                    <li><i class="fas fa-check"></i> Cultural workshops</li>
+                                    <li><i class="fas fa-check"></i> Traditional dance</li>
+                                    <li><i class="fas fa-check"></i> Local market tours</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="packagespage_package-card highlight-card">
+                            <img src="img/sigiriya/3.jpg" alt="Adventure Activities">
+                            <div class="card-body">
+                                <h3>Adventure Activities</h3>
+                                <p>Get your adrenaline pumping with exciting canopy walks, wildlife tracking, and
+                                    survival skills workshops.</p>
+                                <ul class="packagespage_package-features">
+                                    <li><i class="fas fa-check"></i> Canopy walks</li>
+                                    <li><i class="fas fa-check"></i> Wildlife tracking</li>
+                                    <li><i class="fas fa-check"></i> Survival skills</li>
+                                    <li><i class="fas fa-check"></i> Night forest walks</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Itinerary -->
+        <section class="section itinerary-section">
+            <div class="container">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <h2 id="itinerary-title">5-Day Enchanted Forest Discovery Itinerary</h2>
+                    <p class="lead">Discover every moment of your journey with our detailed day-by-day itinerary.</p>
+                </div>
+
+                <div class="itinerary-timeline">
+                    <!-- Day 1 -->
+                    <div class="itinerary-day" data-aos="fade-up">
+                        <div class="day-number">Day 1</div>
+                        <div class="day-content">
+                            <div class="day-header">
+                                <span class="day-badge"><i class="fas fa-calendar"></i> Full Day</span>
+                                <h3>Arrival & Forest Introduction</h3>
+                            </div>
+                            <div class="day-image mb-3">
+                                <img src="img/sigiriya/1.jpg" alt="Sinharaja Forest Reserve" class="img-fluid rounded">
+                            </div>
+                            <p>Begin your adventure with a warm welcome to Sri Lanka. After airport pickup, we'll head
+                                to the
+                                Sinharaja Forest Reserve, a UNESCO World Heritage site. Settle into your eco-lodge and
+                                enjoy an
+                                orientation session about the forest ecosystem.</p>
+
+                            <div class="day-details">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="detail-section">
+                                            <h4><i class="fas fa-tasks text-success"></i> Key Activities</h4>
+                                            <ul>
+                                                <li>Airport pickup and transfer</li>
+                                                <li>Forest reserve orientation</li>
+                                                <li>Eco-lodge check-in</li>
+                                                <li>Welcome dinner</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="detail-section">
+                                            <h4><i class="fas fa-star text-warning"></i> Highlights</h4>
+                                            <ul>
+                                                <li>First glimpse of tropical rainforest</li>
+                                                <li>Local cuisine experience</li>
+                                                <li>Sunset forest views</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="day-footer">
+                                <span><i class="fas fa-utensils"></i> Meals: Dinner</span>
+                                <span><i class="fas fa-bed"></i> Stay: Eco Lodge in Sinharaja</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 2 -->
+                    <div class="itinerary-day" data-aos="fade-up">
+                        <div class="day-number">Day 2</div>
+                        <div class="day-content">
+                            <div class="day-header">
+                                <span class="day-badge"><i class="fas fa-calendar"></i> Full Day</span>
+                                <h3>Deep Forest Exploration</h3>
+                            </div>
+                            <div class="day-image mb-3">
+                                <img src="img/sigiriya/2.jpg" alt="Forest Exploration" class="img-fluid rounded">
+                            </div>
+                            <p>Wake up to the sounds of the forest and embark on your first guided trek through the
+                                Sinharaja
+                                rainforest. Discover rare plant species, spot endemic birds, and learn about the
+                                forest's
+                                biodiversity from our expert naturalist guide.</p>
+
+                            <div class="day-details">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="detail-section">
+                                            <h4><i class="fas fa-tasks text-success"></i> Key Activities</h4>
+                                            <ul>
+                                                <li>Morning forest trek</li>
+                                                <li>Bird watching session</li>
+                                                <li>Plant identification walk</li>
+                                                <li>Photography workshop</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="detail-section">
+                                            <h4><i class="fas fa-star text-warning"></i> Highlights</h4>
+                                            <ul>
+                                                <li>Endemic bird species</li>
+                                                <li>Ancient trees and vines</li>
+                                                <li>Natural water streams</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="day-footer">
+                                <span><i class="fas fa-utensils"></i> Meals: Breakfast, Lunch, Dinner</span>
+                                <span><i class="fas fa-bed"></i> Stay: Eco Lodge in Sinharaja</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 3 -->
+                    <div class="itinerary-day" data-aos="fade-up">
+                        <div class="day-number">Day 3</div>
+                        <div class="day-content">
+                            <div class="day-header">
+                                <span class="day-badge"><i class="fas fa-calendar"></i> Full Day</span>
+                                <h3>Cultural Heritage Sites</h3>
+                            </div>
+                            <div class="day-image mb-3">
+                                <img src="img/sigiriya/3.jpg" alt="Cultural Heritage Sites" class="img-fluid rounded">
+                            </div>
+                            <p>Today we venture beyond the forest to explore ancient cultural sites. Visit the historic
+                                temples
+                                and ruins that tell the story of Sri Lanka's rich heritage. Experience traditional
+                                ceremonies
+                                and learn about local customs.</p>
+
+                            <div class="day-details">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="detail-section">
+                                            <h4><i class="fas fa-tasks text-success"></i> Key Activities</h4>
+                                            <ul>
+                                                <li>Temple visits</li>
+                                                <li>Cultural workshops</li>
+                                                <li>Traditional dance show</li>
+                                                <li>Local market tour</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="detail-section">
+                                            <h4><i class="fas fa-star text-warning"></i> Highlights</h4>
+                                            <ul>
+                                                <li>Ancient architecture</li>
+                                                <li>Religious ceremonies</li>
+                                                <li>Local handicrafts</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="day-footer">
+                                <span><i class="fas fa-utensils"></i> Meals: Breakfast, Lunch, Dinner</span>
+                                <span><i class="fas fa-bed"></i> Stay: Eco Lodge in Sinharaja</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 4 -->
+                    <div class="itinerary-day" data-aos="fade-up">
+                        <div class="day-number">Day 4</div>
+                        <div class="day-content">
+                            <div class="day-header">
+                                <span class="day-badge"><i class="fas fa-calendar"></i> Full Day</span>
+                                <h3>Adventure & Wildlife</h3>
+                            </div>
+                            <div class="day-image mb-3">
+                                <img src="img/sigiriya/4.jpg" alt="Adventure & Wildlife" class="img-fluid rounded">
+                            </div>
+                            <p>Get ready for an action-packed day of adventure activities. From canopy walks to wildlife
+                                spotting, experience the thrill of the forest in exciting new ways. Learn survival
+                                skills and
+                                discover hidden forest secrets.</p>
+
+                            <div class="day-details">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="detail-section">
+                                            <h4><i class="fas fa-tasks text-success"></i> Key Activities</h4>
+                                            <ul>
+                                                <li>Canopy walk adventure</li>
+                                                <li>Wildlife tracking</li>
+                                                <li>Survival skills workshop</li>
+                                                <li>Night forest walk</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="detail-section">
+                                            <h4><i class="fas fa-star text-warning"></i> Highlights</h4>
+                                            <ul>
+                                                <li>Tree-top perspectives</li>
+                                                <li>Nocturnal wildlife</li>
+                                                <li>Adventure challenges</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="day-footer">
+                                <span><i class="fas fa-utensils"></i> Meals: Breakfast, Lunch, Dinner</span>
+                                <span><i class="fas fa-bed"></i> Stay: Eco Lodge in Sinharaja</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 5 -->
+                    <div class="itinerary-day" data-aos="fade-up">
+                        <div class="day-number">Day 5</div>
+                        <div class="day-content">
+                            <div class="day-header">
+                                <span class="day-badge"><i class="fas fa-calendar"></i> Half Day</span>
+                                <h3>Farewell & Departure</h3>
+                            </div>
+                            <div class="day-image mb-3">
+                                <img src="img/sigiriya/5.jpg" alt="Farewell & Departure" class="img-fluid rounded">
+                            </div>
+                            <p>On your final day, enjoy a leisurely morning with optional activities. Share your
+                                experiences
+                                with fellow travelers over breakfast, then bid farewell to the forest as we transfer you
+                                back to
+                                the airport for your departure.</p>
+
+                            <div class="day-details">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="detail-section">
+                                            <h4><i class="fas fa-tasks text-success"></i> Key Activities</h4>
+                                            <ul>
+                                                <li>Optional morning walk</li>
+                                                <li>Experience sharing session</li>
+                                                <li>Certificate presentation</li>
+                                                <li>Airport transfer</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="detail-section">
+                                            <h4><i class="fas fa-star text-warning"></i> Highlights</h4>
+                                            <ul>
+                                                <li>Final forest moments</li>
+                                                <li>Group photo session</li>
+                                                <li>Memorable farewell</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="day-footer">
+                                <span><i class="fas fa-utensils"></i> Meals: Breakfast</span>
+                                <span><i class="fas fa-plane"></i> Departure</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Places You'll Stay -->
+        <section class="section accommodation-section">
+            <div class="container">
+                <div class="section-title" data-aos="fade-up">
+                    <h2 id="accommodation-title">Places You'll Stay</h2>
+                    <p id="accommodation-subtitle">Experience comfort and luxury in carefully selected accommodations
+                        that complement your adventure.</p>
+                </div>
+
+                <div class="row g-4" id="accommodation-container">
+                    <!-- Accommodation cards will be populated dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section faq-section" id="faq">
+            <div class="container">
+                <div class="section-title" data-aos="fade-up">
+                    <h2>Frequently Asked Questions</h2>
+                    <p>Find answers to common questions about our 5-Day Enchanted Forest Discovery tour.</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="faq-container" data-aos="fade-up">
+                            <!-- FAQ Item 1 -->
+                            <div class="faq-item">
+                                <div class="faq-question" data-bs-toggle="collapse" data-bs-target="#faq1"
+                                    aria-expanded="false" aria-controls="faq1">
+                                    <h4>What is included in the tour package?</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="collapse" id="faq1">
+                                    <div class="faq-answer">
+                                        <p>Our 5-Day Enchanted Forest Discovery package includes:</p>
+                                        <ul>
+                                            <li>Professional English-speaking guide</li>
+                                            <li>All accommodation in eco-lodges</li>
+                                            <li>All meals (breakfast, lunch, dinner)</li>
+                                            <li>Transportation throughout the tour</li>
+                                            <li>Forest reserve entrance fees</li>
+                                            <li>All activities and workshops</li>
+                                            <li>Airport transfers</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 2 -->
+                            <div class="faq-item">
+                                <div class="faq-question" data-bs-toggle="collapse" data-bs-target="#faq2"
+                                    aria-expanded="false" aria-controls="faq2">
+                                    <h4>What should I pack for this tour?</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="collapse" id="faq2">
+                                    <div class="faq-answer">
+                                        <p>Essential items to pack include:</p>
+                                        <ul>
+                                            <li>Comfortable hiking shoes or boots</li>
+                                            <li>Lightweight, breathable clothing</li>
+                                            <li>Rain jacket or poncho</li>
+                                            <li>Insect repellent</li>
+                                            <li>Sunscreen and hat</li>
+                                            <li>Water bottle</li>
+                                            <li>Camera and binoculars</li>
+                                            <li>Personal toiletries</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 3 -->
+                            <div class="faq-item">
+                                <div class="faq-question" data-bs-toggle="collapse" data-bs-target="#faq3"
+                                    aria-expanded="false" aria-controls="faq3">
+                                    <h4>What is the difficulty level of the activities?</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="collapse" id="faq3">
+                                    <div class="faq-answer">
+                                        <p>This tour is designed for moderate fitness levels:</p>
+                                        <ul>
+                                            <li>Forest treks are 2-4 hours with gentle to moderate inclines</li>
+                                            <li>Canopy walks are suitable for most ages (minimum height requirement
+                                                applies)</li>
+                                            <li>Activities can be adjusted for different fitness levels</li>
+                                            <li>No previous hiking experience required</li>
+                                            <li>Professional guides ensure safety and comfort</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 4 -->
+                            <div class="faq-item">
+                                <div class="faq-question" data-bs-toggle="collapse" data-bs-target="#faq4"
+                                    aria-expanded="false" aria-controls="faq4">
+                                    <h4>What is the best time to visit Sinharaja Forest?</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="collapse" id="faq4">
+                                    <div class="faq-answer">
+                                        <p>The best time to visit Sinharaja Forest Reserve is:</p>
+                                        <ul>
+                                            <li><strong>Dry Season (January to April):</strong> Best for hiking and
+                                                wildlife spotting</li>
+                                            <li><strong>Monsoon Season (May to December):</strong> Lush greenery and
+                                                fewer crowds</li>
+                                            <li><strong>Peak Wildlife Viewing:</strong> Early morning (6-9 AM) and late
+                                                afternoon (4-6 PM)</li>
+                                            <li><strong>Bird Watching:</strong> Year-round, with migratory species from
+                                                November to March</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 5 -->
+                            <div class="faq-item">
+                                <div class="faq-question" data-bs-toggle="collapse" data-bs-target="#faq5"
+                                    aria-expanded="false" aria-controls="faq5">
+                                    <h4>Are there any age restrictions for this tour?</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="collapse" id="faq5">
+                                    <div class="faq-answer">
+                                        <p>Age requirements and recommendations:</p>
+                                        <ul>
+                                            <li><strong>Minimum Age:</strong> 8 years old for most activities</li>
+                                            <li><strong>Canopy Walk:</strong> Minimum height of 120cm (4 feet)</li>
+                                            <li><strong>Children 8-12:</strong> Must be accompanied by adults</li>
+                                            <li><strong>Teenagers:</strong> Can participate in all activities</li>
+                                            <li><strong>Senior Travelers:</strong> Welcome with moderate fitness level
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 6 -->
+                            <div class="faq-item">
+                                <div class="faq-question" data-bs-toggle="collapse" data-bs-target="#faq6"
+                                    aria-expanded="false" aria-controls="faq6">
+                                    <h4>What happens in case of bad weather?</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="collapse" id="faq6">
+                                    <div class="faq-answer">
+                                        <p>We have flexible plans for weather conditions:</p>
+                                        <ul>
+                                            <li>Light rain: Tour continues with provided rain gear</li>
+                                            <li>Heavy rain: Alternative indoor activities and cultural experiences</li>
+                                            <li>Severe weather: Tour rescheduling or full refund options</li>
+                                            <li>Real-time weather monitoring by our guides</li>
+                                            <li>Backup plans always available</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 7 -->
+                            <div class="faq-item">
+                                <div class="faq-question" data-bs-toggle="collapse" data-bs-target="#faq7"
+                                    aria-expanded="false" aria-controls="faq7">
+                                    <h4>How do I book this tour and what are the payment options?</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="collapse" id="faq7">
+                                    <div class="faq-answer">
+                                        <p>Booking and payment information:</p>
+                                        <ul>
+                                            <li><strong>Booking:</strong> Online through our website or contact us
+                                                directly</li>
+                                            <li><strong>Deposit:</strong> 30% required to confirm booking</li>
+                                            <li><strong>Payment Methods:</strong> Credit card, bank transfer, or PayPal
+                                            </li>
+                                            <li><strong>Full Payment:</strong> Due 30 days before tour start</li>
+                                            <li><strong>Cancellation Policy:</strong> Full refund up to 14 days before
+                                                tour</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scroll to Top Button -->
+        <a href="#top" class="scroll-top">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+    </main>
+
+    <!-- Frequently Asked Questions Section -->
+    <section class="section faq-section">
+        <div class="container">
+            <div class="section-title text-center" data-aos="fade-up">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about this tour package</p>
+            </div>
+
+            <div class="faq-container" data-aos="fade-up" data-aos-delay="100">
+                <!-- FAQ items will be dynamically populated here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Book Now Section - Call to action before footer -->
+    <section class="package-book-now-section">
+        <div class="container">
+            <div class="package-book-now-content" data-aos="fade-up">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h2>Ready to Book This Amazing Package?</h2>
+                        <p>Don't miss out on this incredible adventure! Contact us today to secure your spot and start
+                            planning your dream Sri Lankan journey.</p>
+                        <div class="package-book-now-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Instant confirmation</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Flexible payment options</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>24/7 travel support</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <a href="contact.html" class="package-btn-book-now">
+                            <i class="fas fa-calendar-check"></i>
+                            Book This Package
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5>Manon Lanka Tours</h5>
+                    <p>Your trusted partner for unforgettable Sri Lankan adventures. We specialize in creating
+                        personalized travel experiences that showcase the beauty, culture, and excitement of
+                        paradise island.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="tourPackages.html">Tour Packages</a></li>
+                        <li><a href="thingsToDo.html">Things to Do</a></li>
+                        <li><a href="topAttractions.html">Attractions</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> 123 Travel Street, Colombo, Sri Lanka</p>
+                    <p><i class="fas fa-phone me-2"></i> +94 112 991 508</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@manonlankatours.com</p>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5>Newsletter</h5>
+                    <p>Subscribe to our newsletter for travel tips and special offers.</p>
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Your email">
+                        <button class="btn btn-primary" type="button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2024 Manon Lanka Tours. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
