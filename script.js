@@ -155,11 +155,21 @@ function initTestimonialCarousel() {
     function nextTestimonial() {
         currentIndex = (currentIndex + 1) % testimonialCards.length;
         showTestimonial(currentIndex);
+        
+        // Synchronize video carousel
+        if (window.videoCarouselNextSlide) {
+            window.videoCarouselNextSlide();
+        }
     }
     
     function prevTestimonial() {
         currentIndex = (currentIndex - 1 + testimonialCards.length) % testimonialCards.length;
         showTestimonial(currentIndex);
+        
+        // Synchronize video carousel
+        if (window.videoCarouselPrevSlide) {
+            window.videoCarouselPrevSlide();
+        }
     }
     
     if (nextBtn && prevBtn) {
@@ -167,8 +177,14 @@ function initTestimonialCarousel() {
         prevBtn.addEventListener('click', prevTestimonial);
     }
     
-    setInterval(nextTestimonial, 5000);
+    // Remove auto-advancement - testimonials will be controlled by video carousel
+    // setInterval(nextTestimonial, 5000);
     showTestimonial(0);
+    
+    // Expose functions globally for video carousel synchronization
+    window.showTestimonial = showTestimonial;
+    window.nextTestimonial = nextTestimonial;
+    window.prevTestimonial = prevTestimonial;
 }
 
 // Package filtering
@@ -463,8 +479,12 @@ let globalVideoManager = {
         const allVideos = document.querySelectorAll('video');
         allVideos.forEach(video => {
             if (video !== this.currentPlayingVideo) {
-                video.pause();
-                video.muted = true;
+                // Don't pause testimonial carousel videos to allow natural progression
+                const testimonialCarousel = video.closest('.testimonial-video-carousel');
+                if (!testimonialCarousel) {
+                    video.pause();
+                    video.muted = true;
+                }
             }
         });
     },
@@ -525,10 +545,13 @@ function initScrollVideoPlayer() {
                 }
             } else {
                 // Video container is out of view - pause all videos in this container
-                videos.forEach(video => {
-                    video.pause();
-                    video.muted = true;
-                });
+                // But don't pause testimonial carousel videos to allow natural progression
+                if (!container.classList.contains('testimonial-video-carousel')) {
+                    videos.forEach(video => {
+                        video.pause();
+                        video.muted = true;
+                    });
+                }
             }
         });
     }, {
@@ -572,7 +595,9 @@ function initVideoCarousel() {
                 globalVideoManager.setCurrentVideo(video);
                 video.muted = false;
                 video.currentTime = 0;
-                video.play();
+                video.play().catch(e => {
+                    console.log('Error playing video:', e);
+                });
             }
         }
 
@@ -582,6 +607,11 @@ function initVideoCarousel() {
         }
 
         currentSlide = index;
+        
+        // Synchronize text testimonial with video slide
+        if (window.showTestimonial) {
+            window.showTestimonial(index);
+        }
     }
 
     function nextSlide() {
@@ -590,8 +620,9 @@ function initVideoCarousel() {
     }
 
     function startAutoPlay() {
-        // Don't use interval - let videos play to completion
-        // The video 'ended' event will trigger the next slide
+        // Videos will auto-advance when they end via the 'ended' event listener
+        // This function is called when the carousel becomes visible
+        console.log('Video carousel auto-play started');
     }
 
     function stopAutoPlay() {
@@ -600,9 +631,14 @@ function initVideoCarousel() {
         }
     }
 
-    // Expose functions globally for scroll observer
+    // Expose functions globally for scroll observer and testimonial synchronization
     window.videoCarouselAutoPlay = startAutoPlay;
     window.videoCarouselStopAutoPlay = stopAutoPlay;
+    window.videoCarouselNextSlide = nextSlide;
+    window.videoCarouselPrevSlide = () => {
+        const prevIndex = (currentSlide - 1 + videoSlides.length) % videoSlides.length;
+        showSlide(prevIndex);
+    };
 
     // Initialize
     if (videoSlides.length > 0) {
@@ -615,8 +651,8 @@ function initVideoCarousel() {
         });
         
         showSlide(0);
-        // Don't start auto-play immediately - let scroll observer handle it
-        // startAutoPlay();
+        // Start auto-play immediately
+        startAutoPlay();
 
         // Dot click events
         videoDots.forEach((dot, index) => {
@@ -642,16 +678,28 @@ function initVideoCarousel() {
                 video.addEventListener('ended', () => {
                     // Wait 2 seconds after video ends, then go to next slide
                     setTimeout(() => {
-                        // Only advance if carousel is still visible
-                        const carousel = document.querySelector('.testimonial-video-carousel');
-                        if (carousel && isElementInViewport(carousel)) {
-                            nextSlide();
-                        }
+                        // Always advance to next slide when video ends
+                        nextSlide();
                     }, 2000);
                 });
                 
                 // Remove loop attribute to allow natural ending
                 video.removeAttribute('loop');
+                
+                // Add a fallback timer in case the 'ended' event doesn't fire
+                // This ensures the carousel keeps moving even if there are video issues
+                video.addEventListener('loadedmetadata', () => {
+                    const duration = video.duration;
+                    if (duration && duration > 0) {
+                        // Set a timer to advance after video duration + 2 seconds
+                        setTimeout(() => {
+                            // Only advance if this is still the current video
+                            if (video.parentElement.classList.contains('active')) {
+                                nextSlide();
+                            }
+                        }, (duration * 1000) + 2000);
+                    }
+                });
             }
         });
     }
